@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://cekuig2lqcamr"]
+[gd_scene load_steps=24 format=3 uid="uid://cekuig2lqcamr"]
 
 [ext_resource type="Texture2D" uid="uid://bbscio5no8n6l" path="res://images/moonless_golf_4k.exr" id="1_u5sy4"]
 [ext_resource type="PackedScene" uid="uid://dbl4bxb3jrxx4" path="res://scenes/player.tscn" id="2_u5sy4"]
@@ -19,8 +19,6 @@ background_mode = 2
 sky = SubResource("Sky_lnu2h")
 tonemap_mode = 2
 glow_enabled = true
-
-[sub_resource type="BoxMesh" id="BoxMesh_yqjtg"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_yqjtg"]
 shader = ExtResource("3_lbhrr")
@@ -120,10 +118,6 @@ shadow_enabled = true
 
 [node name="Player" parent="." instance=ExtResource("2_u5sy4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.734558, 459.26263, 126.04921)
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-transform = Transform3D(13.80738, 0, 0, 0, 1, 0, 0, 0, 13.80738, 0, 0, 0)
-mesh = SubResource("BoxMesh_yqjtg")
 
 [node name="MeshInstance2D" type="MeshInstance2D" parent="."]
 texture_filter = 1
