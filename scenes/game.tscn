@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://cekuig2lqcamr"]
+[gd_scene load_steps=26 format=3 uid="uid://cekuig2lqcamr"]
 
 [ext_resource type="Texture2D" uid="uid://bbscio5no8n6l" path="res://images/moonless_golf_4k.exr" id="1_u5sy4"]
 [ext_resource type="PackedScene" uid="uid://dbl4bxb3jrxx4" path="res://scenes/player.tscn" id="2_u5sy4"]
@@ -106,6 +106,12 @@ size = Vector3(2.3868103, 0.42834473, 0.08276653)
 [sub_resource type="BoxShape3D" id="BoxShape3D_gee14"]
 size = Vector3(2.3868103, 0.42834473, 0.08276653)
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_0tnpc"]
+size = Vector3(4.6796875, 76.624756, 79.8161)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_vtaks"]
+size = Vector3(4.6796875, 76.624756, 81.40512)
+
 [node name="Game" type="Node3D"]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
@@ -162,3 +168,11 @@ shape = SubResource("BoxShape3D_gee14")
 [node name="CollisionShape3D5" type="CollisionShape3D" parent="Firewatch/Guardrails"]
 transform = Transform3D(-8.742278e-06, 0, 200, 0, 200, 0, -200, 0, -8.742278e-06, 240.90416, -57.9133, 79.094406)
 shape = SubResource("BoxShape3D_gee14")
+
+[node name="CollisionShape3D6" type="CollisionShape3D" parent="Firewatch/Guardrails"]
+transform = Transform3D(1, 8.077937e-28, 0, 1.1097408e-20, 1, 0, -2.6628005e-16, 0, 1, 94.46497, -54.62787, -98.60356)
+shape = SubResource("BoxShape3D_0tnpc")
+
+[node name="CollisionShape3D7" type="CollisionShape3D" parent="Firewatch/Guardrails"]
+transform = Transform3D(-4.371139e-08, 8.077937e-28, 1, 0, 1, 1.8590123e-18, -1, 0, -4.371139e-08, 202.17769, -55.89514, 90.27174)
+shape = SubResource("BoxShape3D_vtaks")
