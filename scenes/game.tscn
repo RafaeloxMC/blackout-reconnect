@@ -1,0 +1,170 @@
+[gd_scene load_steps=25 format=3 uid="uid://cekuig2lqcamr"]
+
+[ext_resource type="Texture2D" uid="uid://bbscio5no8n6l" path="res://images/moonless_golf_4k.exr" id="1_u5sy4"]
+[ext_resource type="PackedScene" uid="uid://dbl4bxb3jrxx4" path="res://scenes/player.tscn" id="2_u5sy4"]
+[ext_resource type="Shader" uid="uid://d21on2axfmaoo" path="res://shaders/pixelate.gdshader" id="3_lbhrr"]
+[ext_resource type="Texture2D" uid="uid://bqfly3rrfoxvl" path="res://textures/aerial_grass_rock_diff_4k.jpg" id="3_lnu2h"]
+[ext_resource type="Texture2D" uid="uid://dnl6p2ojv6xaj" path="res://textures/aerial_grass_rock_nor_gl_4k.jpg" id="4_lbhrr"]
+[ext_resource type="PackedScene" uid="uid://bjjbfcxkutwbv" path="res://models/simple_signal_tower.glb" id="5_iywne"]
+[ext_resource type="PackedScene" uid="uid://ck0wx3l8p1qwu" path="res://models/teeming_towers_diorama.glb" id="6_p57ef"]
+
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_gee14"]
+panorama = ExtResource("1_u5sy4")
+
+[sub_resource type="Sky" id="Sky_lnu2h"]
+sky_material = SubResource("PanoramaSkyMaterial_gee14")
+
+[sub_resource type="Environment" id="Environment_lbhrr"]
+background_mode = 2
+sky = SubResource("Sky_lnu2h")
+tonemap_mode = 2
+glow_enabled = true
+
+[sub_resource type="BoxMesh" id="BoxMesh_yqjtg"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_yqjtg"]
+shader = ExtResource("3_lbhrr")
+
+[sub_resource type="QuadMesh" id="QuadMesh_uwrxv"]
+size = Vector2(1280, 720)
+center_offset = Vector3(640, 360, 0)
+
+[sub_resource type="Gradient" id="Gradient_lbhrr"]
+offsets = PackedFloat32Array(0.2, 1)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_iywne"]
+noise_type = 2
+frequency = 0.03
+cellular_jitter = 3.0
+cellular_return_type = 0
+domain_warp_enabled = true
+domain_warp_type = 1
+domain_warp_amplitude = 50.0
+domain_warp_fractal_type = 2
+domain_warp_fractal_lacunarity = 1.5
+domain_warp_fractal_gain = 1.0
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_p57ef"]
+noise = SubResource("FastNoiseLite_iywne")
+color_ramp = SubResource("Gradient_lbhrr")
+seamless = true
+
+[sub_resource type="Terrain3DMaterial" id="Terrain3DMaterial_u5sy4"]
+_shader_parameters = {
+&"bias_distance": 512.0,
+&"blend_sharpness": 0.5,
+&"depth_blur": 0.0,
+&"enable_macro_variation": true,
+&"enable_projection": true,
+&"flat_terrain_normals": false,
+&"macro_variation1": Color(1, 1, 1, 1),
+&"macro_variation2": Color(1, 1, 1, 1),
+&"macro_variation_slope": 0.333,
+&"mipmap_bias": 1.0,
+&"noise1_angle": 0.0,
+&"noise1_offset": Vector2(0.5, 0.5),
+&"noise1_scale": 0.04,
+&"noise2_scale": 0.076,
+&"noise_texture": SubResource("NoiseTexture2D_p57ef"),
+&"projection_threshold": 0.8
+}
+world_background = 0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gee14"]
+transparency = 4
+cull_mode = 2
+vertex_color_use_as_albedo = true
+backlight_enabled = true
+backlight = Color(0.5, 0.5, 0.5, 1)
+distance_fade_mode = 1
+distance_fade_min_distance = 128.0
+distance_fade_max_distance = 96.0
+
+[sub_resource type="Terrain3DMeshAsset" id="Terrain3DMeshAsset_0tnpc"]
+generated_type = 1
+height_offset = 0.5
+material_override = SubResource("StandardMaterial3D_gee14")
+last_lod = 0
+last_shadow_lod = 0
+lod0_range = 128.0
+
+[sub_resource type="Terrain3DTextureAsset" id="Terrain3DTextureAsset_iywne"]
+name = "aerial_grass_rock_diff_4k"
+albedo_texture = ExtResource("3_lnu2h")
+normal_texture = ExtResource("4_lbhrr")
+uv_scale = 0.01
+
+[sub_resource type="Terrain3DAssets" id="Terrain3DAssets_kvuet"]
+mesh_list = Array[Terrain3DMeshAsset]([SubResource("Terrain3DMeshAsset_0tnpc")])
+texture_list = Array[Terrain3DTextureAsset]([SubResource("Terrain3DTextureAsset_iywne")])
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_u5sy4"]
+size = Vector3(2.3868103, 0.09863281, 2.247326)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_p57ef"]
+size = Vector3(2.3868103, 0.42834473, 0.08276653)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_gee14"]
+size = Vector3(2.3868103, 0.42834473, 0.08276653)
+
+[node name="Game" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_lbhrr")
+
+[node name="Sun" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 0, 0)
+light_energy = 0.25
+shadow_enabled = true
+
+[node name="Player" parent="." instance=ExtResource("2_u5sy4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.734558, 459.26263, 126.04921)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(13.80738, 0, 0, 0, 1, 0, 0, 0, 13.80738, 0, 0, 0)
+mesh = SubResource("BoxMesh_yqjtg")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="."]
+texture_filter = 1
+material = SubResource("ShaderMaterial_yqjtg")
+mesh = SubResource("QuadMesh_uwrxv")
+
+[node name="Terrain3D" type="Terrain3D" parent="."]
+data_directory = "res://data"
+material = SubResource("Terrain3DMaterial_u5sy4")
+assets = SubResource("Terrain3DAssets_kvuet")
+top_level = true
+metadata/_edit_lock_ = true
+
+[node name="Radio Tower" parent="." instance=ExtResource("5_iywne")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1117.229, -4.2012978, -1463.3622)
+
+[node name="Firewatch" parent="." instance=ExtResource("6_p57ef")]
+transform = Transform3D(99.99939, -0.34906515, 0, 0.34892905, 99.9604, 2.7921638, -0.009746471, -2.792147, 99.96101, 171.749, 2010, 283.95178)
+
+[node name="Walls" type="StaticBody3D" parent="Firewatch"]
+transform = Transform3D(0.009999939, 3.4892906e-05, -9.746472e-07, -3.4906516e-05, 0.00999604, -0.0002792147, 5.9604645e-14, 0.00027921636, 0.009996101, -1.7708335, -15.278765, -2.0065863)
+
+[node name="Guardrails" type="StaticBody3D" parent="Firewatch"]
+transform = Transform3D(0.009999939, 3.4892906e-05, -9.746472e-07, -3.4906516e-05, 0.00999604, -0.0002792147, 5.9604645e-14, 0.00027921636, 0.009996101, -1.7708335, -15.278765, -2.0065863)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Firewatch/Guardrails"]
+transform = Transform3D(200, 0, 0, 0, 200, 0, 0, 0, 200, 4.2266846, -90.13672, 80.075455)
+shape = SubResource("BoxShape3D_u5sy4")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="Firewatch/Guardrails"]
+transform = Transform3D(200, 0, 0, 0, 200, 0, 0, 0, 200, 4.2266846, -57.165527, 296.53137)
+shape = SubResource("BoxShape3D_p57ef")
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="Firewatch/Guardrails"]
+transform = Transform3D(200, 0, 0, 0, 200, 0, 0, 0, 200, -0.2893982, -58.228638, -146.6732)
+shape = SubResource("BoxShape3D_gee14")
+
+[node name="CollisionShape3D4" type="CollisionShape3D" parent="Firewatch/Guardrails"]
+transform = Transform3D(-8.742278e-06, 0, 200, 0, 200, 0, -200, 0, -8.742278e-06, -233.49391, -59.220245, 65.313065)
+shape = SubResource("BoxShape3D_gee14")
+
+[node name="CollisionShape3D5" type="CollisionShape3D" parent="Firewatch/Guardrails"]
+transform = Transform3D(-8.742278e-06, 0, 200, 0, 200, 0, -200, 0, -8.742278e-06, 240.90416, -57.9133, 79.094406)
+shape = SubResource("BoxShape3D_gee14")
