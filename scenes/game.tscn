@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://cekuig2lqcamr"]
+[gd_scene load_steps=32 format=3 uid="uid://cekuig2lqcamr"]
 
 [ext_resource type="Texture2D" uid="uid://bbscio5no8n6l" path="res://images/moonless_golf_4k.exr" id="1_u5sy4"]
 [ext_resource type="PackedScene" uid="uid://dbl4bxb3jrxx4" path="res://scenes/player.tscn" id="2_u5sy4"]
@@ -7,6 +7,9 @@
 [ext_resource type="Texture2D" uid="uid://dnl6p2ojv6xaj" path="res://textures/aerial_grass_rock_nor_gl_4k.jpg" id="4_lbhrr"]
 [ext_resource type="PackedScene" uid="uid://bjjbfcxkutwbv" path="res://models/simple_signal_tower.glb" id="5_iywne"]
 [ext_resource type="PackedScene" uid="uid://ck0wx3l8p1qwu" path="res://models/teeming_towers_diorama.glb" id="6_p57ef"]
+[ext_resource type="PackedScene" uid="uid://bhf2fqjiadbhm" path="res://models/satellite_comms.glb" id="8_gee14"]
+[ext_resource type="PackedScene" uid="uid://dsryhgkg8jfvy" path="res://models/office_desk.glb" id="9_vtaks"]
+[ext_resource type="PackedScene" uid="uid://bxaxkmsohdcux" path="res://models/bed.glb" id="10_kvpfn"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_gee14"]
 panorama = ExtResource("1_u5sy4")
@@ -97,6 +100,15 @@ uv_scale = 0.01
 mesh_list = Array[Terrain3DMeshAsset]([SubResource("Terrain3DMeshAsset_0tnpc")])
 texture_list = Array[Terrain3DTextureAsset]([SubResource("Terrain3DTextureAsset_iywne")])
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_kvpfn"]
+size = Vector3(270.86447, 118.036865, 5.4763184)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_dinhu"]
+size = Vector3(173.12901, 118.036865, 5.4763184)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_kvuet"]
+size = Vector3(24.86282, 118.036865, 5.4763184)
+
 [sub_resource type="BoxShape3D" id="BoxShape3D_u5sy4"]
 size = Vector3(2.3868103, 0.09863281, 2.247326)
 
@@ -146,6 +158,26 @@ transform = Transform3D(99.99939, -0.34906515, 0, 0.34892905, 99.9604, 2.7921638
 [node name="Walls" type="StaticBody3D" parent="Firewatch"]
 transform = Transform3D(0.009999939, 3.4892906e-05, -9.746472e-07, -3.4906516e-05, 0.00999604, -0.0002792147, 5.9604645e-14, 0.00027921636, 0.009996101, -1.7708335, -15.278765, -2.0065863)
 
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Firewatch/Walls"]
+transform = Transform3D(1, 8.077937e-28, 0, 1.1097161e-20, 1, 0, -3.989864e-16, 0, 1, 17.8447, -1.7492676, -58.395332)
+shape = SubResource("BoxShape3D_kvpfn")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="Firewatch/Walls"]
+transform = Transform3D(-4.371139e-08, 8.077937e-28, 1, 0, 1, 1.8590123e-18, -1, 0, -4.371139e-08, 160.9574, -3.4985352, 76.12991)
+shape = SubResource("BoxShape3D_kvpfn")
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="Firewatch/Walls"]
+transform = Transform3D(1, 8.077937e-28, 0, 1.1097159e-20, 1, 0, -4.0028744e-16, 0, 1, 17.8447, -1.7492676, 209.00705)
+shape = SubResource("BoxShape3D_kvpfn")
+
+[node name="CollisionShape3D4" type="CollisionShape3D" parent="Firewatch/Walls"]
+transform = Transform3D(-4.371139e-08, 8.077937e-28, 1, 0, 1, 1.8590123e-18, -1, 0, -4.371139e-08, -123.296974, -3.4985352, 27.262177)
+shape = SubResource("BoxShape3D_dinhu")
+
+[node name="CollisionShape3D5" type="CollisionShape3D" parent="Firewatch/Walls"]
+transform = Transform3D(-4.371139e-08, 8.077937e-28, 1, 0, 1, 1.8590123e-18, -1, 0, -4.371139e-08, -123.296974, -3.4985352, 199.35349)
+shape = SubResource("BoxShape3D_kvuet")
+
 [node name="Guardrails" type="StaticBody3D" parent="Firewatch"]
 transform = Transform3D(0.009999939, 3.4892906e-05, -9.746472e-07, -3.4906516e-05, 0.00999604, -0.0002792147, 5.9604645e-14, 0.00027921636, 0.009996101, -1.7708335, -15.278765, -2.0065863)
 
@@ -176,3 +208,12 @@ shape = SubResource("BoxShape3D_0tnpc")
 [node name="CollisionShape3D7" type="CollisionShape3D" parent="Firewatch/Guardrails"]
 transform = Transform3D(-4.371139e-08, 8.077937e-28, 1, 0, 1, 1.8590123e-18, -1, 0, -4.371139e-08, 202.17769, -55.89514, 90.27174)
 shape = SubResource("BoxShape3D_vtaks")
+
+[node name="Satellite Ground Station" parent="." instance=ExtResource("8_gee14")]
+transform = Transform3D(-28.611118, 0, 52.739017, 0, 60, 0, -52.739017, 0, -28.611118, -1200.4668, -16.172913, 613.96234)
+
+[node name="Desk" parent="." instance=ExtResource("9_vtaks")]
+transform = Transform3D(-8.742278e-08, 0, 2, 0, 2, 0, -2, 0, -8.742278e-08, 67.2935, 381.64566, 247.90959)
+
+[node name="Bed" parent="." instance=ExtResource("10_kvpfn")]
+transform = Transform3D(-4.371139e-09, 0, 0.1, 0, 0.1, 0, -0.1, 0, -4.371139e-09, -20.42791, 411.8407, 134.29012)
