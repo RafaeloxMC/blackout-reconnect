@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=3 uid="uid://cekuig2lqcamr"]
+[gd_scene load_steps=35 format=3 uid="uid://cekuig2lqcamr"]
 
 [ext_resource type="Texture2D" uid="uid://bbscio5no8n6l" path="res://images/moonless_golf_4k.exr" id="1_u5sy4"]
 [ext_resource type="PackedScene" uid="uid://dbl4bxb3jrxx4" path="res://scenes/player.tscn" id="2_u5sy4"]
@@ -125,6 +125,12 @@ size = Vector3(4.6796875, 76.624756, 79.8161)
 [sub_resource type="BoxShape3D" id="BoxShape3D_vtaks"]
 size = Vector3(4.6796875, 76.624756, 81.40512)
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_ir15t"]
+size = Vector3(84.76907, 32.365246, 34.700195)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_trtic"]
+size = Vector3(910.2734, 702.81824, 1924.5134)
+
 [node name="Game" type="Node3D"]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
@@ -136,7 +142,7 @@ light_energy = 0.25
 shadow_enabled = true
 
 [node name="Player" parent="." instance=ExtResource("2_u5sy4")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.734558, 459.26263, 126.04921)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -39.417103, 459.26263, 230.20198)
 
 [node name="MeshInstance2D" type="MeshInstance2D" parent="."]
 texture_filter = 1
@@ -218,8 +224,20 @@ transform = Transform3D(-28.611118, 0, 52.739017, 0, 60, 0, -52.739017, 0, -28.6
 [node name="Desk" parent="Environment" instance=ExtResource("9_vtaks")]
 transform = Transform3D(-8.742278e-08, 0, 2, 0, 2, 0, -2, 0, -8.742278e-08, 67.2935, 381.64566, 247.90959)
 
+[node name="StaticBody3D" type="StaticBody3D" parent="Environment/Desk"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/Desk/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.2532196, 15.682632, 27.67466)
+shape = SubResource("BoxShape3D_ir15t")
+
 [node name="Bed" parent="Environment" instance=ExtResource("10_kvpfn")]
-transform = Transform3D(-4.371139e-09, 0, 0.1, 0, 0.1, 0, -0.1, 0, -4.371139e-09, -20.42791, 411.8407, 134.29012)
+transform = Transform3D(-4.371139e-09, 0, 0.1, 0, 0.1, 0, -0.1, 0, -4.371139e-09, -20.42791, 411.8407, 119.56062)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Environment/Bed"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/Bed/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 43.527344, 350.9082, -18.405258)
+shape = SubResource("BoxShape3D_trtic")
 
 [node name="Tree" type="Node" parent="."]
 
