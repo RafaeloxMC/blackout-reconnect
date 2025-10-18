@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=3 uid="uid://cekuig2lqcamr"]
+[gd_scene load_steps=33 format=3 uid="uid://cekuig2lqcamr"]
 
 [ext_resource type="Texture2D" uid="uid://bbscio5no8n6l" path="res://images/moonless_golf_4k.exr" id="1_u5sy4"]
 [ext_resource type="PackedScene" uid="uid://dbl4bxb3jrxx4" path="res://scenes/player.tscn" id="2_u5sy4"]
@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://bhf2fqjiadbhm" path="res://models/satellite_comms.glb" id="8_gee14"]
 [ext_resource type="PackedScene" uid="uid://dsryhgkg8jfvy" path="res://models/office_desk.glb" id="9_vtaks"]
 [ext_resource type="PackedScene" uid="uid://bxaxkmsohdcux" path="res://models/bed.glb" id="10_kvpfn"]
+[ext_resource type="PackedScene" uid="uid://58beud7pcspt" path="res://models/oak_trees.glb" id="11_kvpfn"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_gee14"]
 panorama = ExtResource("1_u5sy4")
@@ -149,71 +150,159 @@ assets = SubResource("Terrain3DAssets_kvuet")
 top_level = true
 metadata/_edit_lock_ = true
 
-[node name="Radio Tower" parent="." instance=ExtResource("5_iywne")]
+[node name="Environment" type="Node" parent="."]
+
+[node name="Radio Tower" parent="Environment" instance=ExtResource("5_iywne")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1117.229, -4.2012978, -1463.3622)
 
-[node name="Firewatch" parent="." instance=ExtResource("6_p57ef")]
+[node name="Firewatch" parent="Environment" instance=ExtResource("6_p57ef")]
 transform = Transform3D(99.99939, -0.34906515, 0, 0.34892905, 99.9604, 2.7921638, -0.009746471, -2.792147, 99.96101, 171.749, 2010, 283.95178)
 
-[node name="Walls" type="StaticBody3D" parent="Firewatch"]
+[node name="Walls" type="StaticBody3D" parent="Environment/Firewatch"]
 transform = Transform3D(0.009999939, 3.4892906e-05, -9.746472e-07, -3.4906516e-05, 0.00999604, -0.0002792147, 5.9604645e-14, 0.00027921636, 0.009996101, -1.7708335, -15.278765, -2.0065863)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Firewatch/Walls"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/Firewatch/Walls"]
 transform = Transform3D(1, 8.077937e-28, 0, 1.1097161e-20, 1, 0, -3.989864e-16, 0, 1, 17.8447, -1.7492676, -58.395332)
 shape = SubResource("BoxShape3D_kvpfn")
 
-[node name="CollisionShape3D2" type="CollisionShape3D" parent="Firewatch/Walls"]
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="Environment/Firewatch/Walls"]
 transform = Transform3D(-4.371139e-08, 8.077937e-28, 1, 0, 1, 1.8590123e-18, -1, 0, -4.371139e-08, 160.9574, -3.4985352, 76.12991)
 shape = SubResource("BoxShape3D_kvpfn")
 
-[node name="CollisionShape3D3" type="CollisionShape3D" parent="Firewatch/Walls"]
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="Environment/Firewatch/Walls"]
 transform = Transform3D(1, 8.077937e-28, 0, 1.1097159e-20, 1, 0, -4.0028744e-16, 0, 1, 17.8447, -1.7492676, 209.00705)
 shape = SubResource("BoxShape3D_kvpfn")
 
-[node name="CollisionShape3D4" type="CollisionShape3D" parent="Firewatch/Walls"]
+[node name="CollisionShape3D4" type="CollisionShape3D" parent="Environment/Firewatch/Walls"]
 transform = Transform3D(-4.371139e-08, 8.077937e-28, 1, 0, 1, 1.8590123e-18, -1, 0, -4.371139e-08, -123.296974, -3.4985352, 27.262177)
 shape = SubResource("BoxShape3D_dinhu")
 
-[node name="CollisionShape3D5" type="CollisionShape3D" parent="Firewatch/Walls"]
+[node name="CollisionShape3D5" type="CollisionShape3D" parent="Environment/Firewatch/Walls"]
 transform = Transform3D(-4.371139e-08, 8.077937e-28, 1, 0, 1, 1.8590123e-18, -1, 0, -4.371139e-08, -123.296974, -3.4985352, 199.35349)
 shape = SubResource("BoxShape3D_kvuet")
 
-[node name="Guardrails" type="StaticBody3D" parent="Firewatch"]
+[node name="Guardrails" type="StaticBody3D" parent="Environment/Firewatch"]
 transform = Transform3D(0.009999939, 3.4892906e-05, -9.746472e-07, -3.4906516e-05, 0.00999604, -0.0002792147, 5.9604645e-14, 0.00027921636, 0.009996101, -1.7708335, -15.278765, -2.0065863)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Firewatch/Guardrails"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/Firewatch/Guardrails"]
 transform = Transform3D(200, 0, 0, 0, 200, 0, 0, 0, 200, 4.2266846, -90.13672, 80.075455)
 shape = SubResource("BoxShape3D_u5sy4")
 
-[node name="CollisionShape3D2" type="CollisionShape3D" parent="Firewatch/Guardrails"]
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="Environment/Firewatch/Guardrails"]
 transform = Transform3D(200, 0, 0, 0, 200, 0, 0, 0, 200, 4.2266846, -57.165527, 296.53137)
 shape = SubResource("BoxShape3D_p57ef")
 
-[node name="CollisionShape3D3" type="CollisionShape3D" parent="Firewatch/Guardrails"]
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="Environment/Firewatch/Guardrails"]
 transform = Transform3D(200, 0, 0, 0, 200, 0, 0, 0, 200, -0.2893982, -58.228638, -146.6732)
 shape = SubResource("BoxShape3D_gee14")
 
-[node name="CollisionShape3D4" type="CollisionShape3D" parent="Firewatch/Guardrails"]
+[node name="CollisionShape3D4" type="CollisionShape3D" parent="Environment/Firewatch/Guardrails"]
 transform = Transform3D(-8.742278e-06, 0, 200, 0, 200, 0, -200, 0, -8.742278e-06, -233.49391, -59.220245, 65.313065)
 shape = SubResource("BoxShape3D_gee14")
 
-[node name="CollisionShape3D5" type="CollisionShape3D" parent="Firewatch/Guardrails"]
+[node name="CollisionShape3D5" type="CollisionShape3D" parent="Environment/Firewatch/Guardrails"]
 transform = Transform3D(-8.742278e-06, 0, 200, 0, 200, 0, -200, 0, -8.742278e-06, 240.90416, -57.9133, 79.094406)
 shape = SubResource("BoxShape3D_gee14")
 
-[node name="CollisionShape3D6" type="CollisionShape3D" parent="Firewatch/Guardrails"]
+[node name="CollisionShape3D6" type="CollisionShape3D" parent="Environment/Firewatch/Guardrails"]
 transform = Transform3D(1, 8.077937e-28, 0, 1.1097408e-20, 1, 0, -2.6628005e-16, 0, 1, 94.46497, -54.62787, -98.60356)
 shape = SubResource("BoxShape3D_0tnpc")
 
-[node name="CollisionShape3D7" type="CollisionShape3D" parent="Firewatch/Guardrails"]
+[node name="CollisionShape3D7" type="CollisionShape3D" parent="Environment/Firewatch/Guardrails"]
 transform = Transform3D(-4.371139e-08, 8.077937e-28, 1, 0, 1, 1.8590123e-18, -1, 0, -4.371139e-08, 202.17769, -55.89514, 90.27174)
 shape = SubResource("BoxShape3D_vtaks")
 
-[node name="Satellite Ground Station" parent="." instance=ExtResource("8_gee14")]
+[node name="Satellite Ground Station" parent="Environment" instance=ExtResource("8_gee14")]
 transform = Transform3D(-28.611118, 0, 52.739017, 0, 60, 0, -52.739017, 0, -28.611118, -1200.4668, -16.172913, 613.96234)
 
-[node name="Desk" parent="." instance=ExtResource("9_vtaks")]
+[node name="Desk" parent="Environment" instance=ExtResource("9_vtaks")]
 transform = Transform3D(-8.742278e-08, 0, 2, 0, 2, 0, -2, 0, -8.742278e-08, 67.2935, 381.64566, 247.90959)
 
-[node name="Bed" parent="." instance=ExtResource("10_kvpfn")]
+[node name="Bed" parent="Environment" instance=ExtResource("10_kvpfn")]
 transform = Transform3D(-4.371139e-09, 0, 0.1, 0, 0.1, 0, -0.1, 0, -4.371139e-09, -20.42791, 411.8407, 134.29012)
+
+[node name="Tree" type="Node" parent="."]
+
+[node name="Oak Tree" parent="Tree" instance=ExtResource("11_kvpfn")]
+transform = Transform3D(400, 0, 0, 0, 400, 0, 0, 0, 400, 1112.9409, 5.784851, 241.80103)
+
+[node name="Oak Tree2" parent="Tree" instance=ExtResource("11_kvpfn")]
+transform = Transform3D(400, 0, 0, 0, 400, 0, 0, 0, 400, 1112.9409, 5.784851, 927.5681)
+
+[node name="Oak Tree3" parent="Tree" instance=ExtResource("11_kvpfn")]
+transform = Transform3D(400, 0, 0, 0, 400, 0, 0, 0, 400, 355.87573, 5.784851, 927.5681)
+
+[node name="Oak Tree4" parent="Tree" instance=ExtResource("11_kvpfn")]
+transform = Transform3D(400, 0, 0, 0, 400, 0, 0, 0, 400, -341.76465, 5.784851, 927.5681)
+
+[node name="Oak Tree5" parent="Tree" instance=ExtResource("11_kvpfn")]
+transform = Transform3D(400, 0, 0, 0, 400, 0, 0, 0, 400, -863.0615, 5.784851, -169.03726)
+
+[node name="Oak Tree27" parent="Tree" instance=ExtResource("11_kvpfn")]
+transform = Transform3D(400, 0, 0, 0, 400, 0, 0, 0, 400, -1374.3059, 5.784851, -169.03726)
+
+[node name="Oak Tree28" parent="Tree" instance=ExtResource("11_kvpfn")]
+transform = Transform3D(400, 0, 0, 0, 400, 0, 0, 0, 400, -1517.0221, 5.78479, 301.3837)
+
+[node name="Oak Tree6" parent="Tree" instance=ExtResource("11_kvpfn")]
+transform = Transform3D(400, 0, 0, 0, 400, 0, 0, 0, 400, -1131.8263, 5.784851, -884.628)
+
+[node name="Oak Tree7" parent="Tree" instance=ExtResource("11_kvpfn")]
+transform = Transform3D(400, 0, 0, 0, 400, 0, 0, 0, 400, -639.5297, 5.784851, -618.52246)
+
+[node name="Oak Tree8" parent="Tree" instance=ExtResource("11_kvpfn")]
+transform = Transform3D(400, 0, 0, 0, 400, 0, 0, 0, 400, -639.5297, 5.784851, -1369.2809)
+
+[node name="Oak Tree9" parent="Tree" instance=ExtResource("11_kvpfn")]
+transform = Transform3D(400, 0, 0, 0, 400, 0, 0, 0, 400, -799.33813, 5.784851, -1846.3765)
+
+[node name="Oak Tree10" parent="Tree" instance=ExtResource("11_kvpfn")]
+transform = Transform3D(400, 0, 0, 0, 400, 0, 0, 0, 400, -102.68518, 5.784851, -1224.3815)
+
+[node name="Oak Tree11" parent="Tree" instance=ExtResource("11_kvpfn")]
+transform = Transform3D(400, 0, 0, 0, 400, 0, 0, 0, 400, -229.01868, 5.784851, -607.40704)
+
+[node name="Oak Tree12" parent="Tree" instance=ExtResource("11_kvpfn")]
+transform = Transform3D(400, 0, 0, 0, 400, 0, 0, 0, 400, 242.88391, 5.784851, -735.4199)
+
+[node name="Oak Tree13" parent="Tree" instance=ExtResource("11_kvpfn")]
+transform = Transform3D(400, 0, 0, 0, 400, 0, 0, 0, 400, 489.93524, 5.784851, -1112.0449)
+
+[node name="Oak Tree14" parent="Tree" instance=ExtResource("11_kvpfn")]
+transform = Transform3D(400, 0, 0, 0, 400, 0, 0, 0, 400, 780.93243, 5.784851, -1015.7484)
+
+[node name="Oak Tree15" parent="Tree" instance=ExtResource("11_kvpfn")]
+transform = Transform3D(400, 0, 0, 0, 400, 0, 0, 0, 400, 780.93243, 5.784851, -352.3313)
+
+[node name="Oak Tree16" parent="Tree" instance=ExtResource("11_kvpfn")]
+transform = Transform3D(400, 0, 0, 0, 400, 0, 0, 0, 400, 1176.5403, 5.784851, -352.3313)
+
+[node name="Oak Tree17" parent="Tree" instance=ExtResource("11_kvpfn")]
+transform = Transform3D(400, 0, 0, 0, 400, 0, 0, 0, 400, 1176.5403, 5.784851, -900.87683)
+
+[node name="Oak Tree18" parent="Tree" instance=ExtResource("11_kvpfn")]
+transform = Transform3D(400, 0, 0, 0, 400, 0, 0, 0, 400, 582.30396, 5.78479, 1343.9008)
+
+[node name="Oak Tree19" parent="Tree" instance=ExtResource("11_kvpfn")]
+transform = Transform3D(400, 0, 0, 0, 400, 0, 0, 0, 400, -94.536255, 5.78479, 1343.9008)
+
+[node name="Oak Tree20" parent="Tree" instance=ExtResource("11_kvpfn")]
+transform = Transform3D(400, 0, 0, 0, 400, 0, 0, 0, 400, -611.8634, 5.78479, 245.40686)
+
+[node name="Oak Tree21" parent="Tree" instance=ExtResource("11_kvpfn")]
+transform = Transform3D(400, 0, 0, 0, 400, 0, 0, 0, 400, -836.3109, 5.78479, 1016.7925)
+
+[node name="Oak Tree22" parent="Tree" instance=ExtResource("11_kvpfn")]
+transform = Transform3D(400, 0, 0, 0, 400, 0, 0, 0, 400, 1.7945557, 5.78479, 827.1693)
+
+[node name="Oak Tree23" parent="Tree" instance=ExtResource("11_kvpfn")]
+transform = Transform3D(400, 0, 0, 0, 400, 0, 0, 0, 400, 787.9762, 5.78479, 858.589)
+
+[node name="Oak Tree24" parent="Tree" instance=ExtResource("11_kvpfn")]
+transform = Transform3D(400, 0, 0, 0, 400, 0, 0, 0, 400, 1448.0505, 5.78479, 1123.3586)
+
+[node name="Oak Tree25" parent="Tree" instance=ExtResource("11_kvpfn")]
+transform = Transform3D(400, 0, 0, 0, 400, 0, 0, 0, 400, 1448.0505, 5.78479, 684.7607)
+
+[node name="Oak Tree26" parent="Tree" instance=ExtResource("11_kvpfn")]
+transform = Transform3D(400, 0, 0, 0, 400, 0, 0, 0, 400, -372.95117, 5.784912, -1684.3931)
