@@ -2,7 +2,7 @@ extends Control
 
 @onready var label: Label = $Screen/Main/SignalIcon/Label
 @onready var signal_manager: Control = $"Screen/Main/Signal Manager"
-
+@onready var player: CharacterBody3D = $"../../"
 
 func opened() -> void:
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
@@ -23,5 +23,6 @@ func _on_signal_icon_mouse_exited() -> void:
 
 
 func _on_signal_icon_gui_input(event: InputEvent) -> void:
-	if event.is_action_pressed("interact"):
+	if event.is_action_pressed("interact") && not player.is_dialog_active:
 		signal_manager.visible = !signal_manager.visible
+		player.show_dialog("You", "Oh no... What is going on here???")
