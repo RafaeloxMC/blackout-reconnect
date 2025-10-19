@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://dn5eutlmvobb0"]
+[gd_scene load_steps=5 format=3 uid="uid://dn5eutlmvobb0"]
 
 [ext_resource type="Script" uid="uid://dn83uqgi0hu0k" path="res://scripts/computer_ui.gd" id="1_a82rf"]
 [ext_resource type="Texture2D" uid="uid://dqpyid2x6hd2b" path="res://textures/antenna.png" id="1_w3x1j"]
+[ext_resource type="Texture2D" uid="uid://b2tn412tdn4mn" path="res://textures/wallpaper.png" id="2_25mte"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_a82rf"]
 font_size = 25
@@ -34,30 +35,16 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -77.5
-offset_top = -77.000015
-offset_right = 561.5
-offset_bottom = 347.0
+offset_left = -110.13159
+offset_top = -77.89474
+offset_right = 528.8684
+offset_bottom = 346.10526
 grow_horizontal = 2
 grow_vertical = 2
+scale = Vector2(1.1052636, 1)
 color = Color(0, 0, 0, 1)
 
-[node name="Main" type="ColorRect" parent="Screen"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -62.25
-offset_top = -59.500015
-offset_right = 546.25
-offset_bottom = 311.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0.14767182, 0.14767179, 0.14767179, 1)
-
-[node name="BSUS" type="Label" parent="Screen/Main"]
+[node name="BSUS" type="Label" parent="Screen/Border"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -65,19 +52,35 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -35.0
-offset_top = 190.25
+offset_top = 188.0
 offset_right = 35.0
-offset_bottom = 213.25
+offset_bottom = 211.0
 grow_horizontal = 2
 grow_vertical = 2
 text = "BSUS"
 horizontal_alignment = 1
 
+[node name="Main" type="TextureRect" parent="Screen"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -94.3421
+offset_top = -62.105263
+offset_right = 2465.658
+offset_bottom = 1377.8948
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.263, 0.263)
+texture = ExtResource("2_25mte")
+
 [node name="SignalIcon" type="Control" parent="."]
 anchors_preset = 0
-offset_left = 184.00002
+offset_left = 144.0
 offset_top = 80.0
-offset_right = 224.00002
+offset_right = 184.0
 offset_bottom = 120.0
 scale = Vector2(1.9547719, 2.7437584)
 
