@@ -1,0 +1,141 @@
+[gd_scene load_steps=4 format=3 uid="uid://duosadeq84jhd"]
+
+[ext_resource type="Script" uid="uid://ddeelq2k8vbb8" path="res://scripts/file_viewer.gd" id="1_s34fm"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_vi1w1"]
+font_size = 12
+
+[sub_resource type="LabelSettings" id="LabelSettings_t8n0d"]
+font_size = 24
+
+[node name="File Viewer" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 597.9087
+offset_top = 456.27374
+offset_right = 1309.9087
+offset_bottom = 840.27374
+scale = Vector2(3, 3)
+script = ExtResource("1_s34fm")
+
+[node name="Background" type="ColorRect" parent="."]
+layout_mode = 0
+offset_right = 712.0
+offset_bottom = 384.0
+color = Color(0.15294118, 0.15294118, 0.15294118, 0.94509804)
+
+[node name="Left" type="Control" parent="Background"]
+layout_mode = 1
+anchor_left = 0.060000002
+anchor_top = 0.238
+anchor_right = 0.298
+anchor_bottom = 0.767
+offset_left = 0.31044006
+offset_top = -0.14990234
+offset_right = -0.14556885
+offset_bottom = 0.047424316
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Navbar2" type="ColorRect" parent="Background/Left"]
+layout_mode = 0
+offset_left = 207.33333
+offset_top = -66.666664
+offset_right = 211.66667
+offset_bottom = 292.5754
+color = Color(0.26293245, 0.26293245, 0.26293242, 0.94509804)
+
+[node name="Connection Status" type="Label" parent="Background/Left"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -107.5
+offset_top = -254.33334
+offset_right = 33.5
+offset_bottom = -231.33334
+grow_horizontal = 2
+grow_vertical = 0
+text = "File Stats"
+
+[node name="Last Ping" type="Label" parent="Background/Left"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -107.5
+offset_top = -231.0
+offset_right = 99.83334
+offset_bottom = -49.66667
+grow_horizontal = 2
+grow_vertical = 0
+text = "Last edited 01/01/1970
+File size: 8KB
+File owned by: Agency 47 LLC.
+Editable: READ_ONLY"
+label_settings = SubResource("LabelSettings_vi1w1")
+
+[node name="Right" type="Control" parent="Background"]
+anchors_preset = 0
+offset_left = 254.6971
+offset_top = 23.908752
+offset_right = 712.03046
+offset_bottom = 383.90875
+
+[node name="Password Header" type="Label" parent="Background/Right"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -135.5
+offset_top = 34.333336
+offset_right = 135.5
+offset_bottom = 68.333336
+grow_horizontal = 2
+text = "How To Launch The Signal Station"
+label_settings = SubResource("LabelSettings_t8n0d")
+
+[node name="Password Hint" type="Label" parent="Background/Right"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -192.00003
+offset_top = 77.333336
+offset_right = 191.99997
+offset_bottom = 334.33334
+grow_horizontal = 2
+text = "Signals down? It's in your hand to save the world now. Without your help, many institutions will be offline. Hospitals without connection, military bases are dead. Find the password as quick as possible.
+Hint:
+The size of this file could be an interesting start?
+Maybe count the amount of equipment outside?
+What about the decade this has been written?
+What about the day?"
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="Navbar" type="ColorRect" parent="."]
+layout_mode = 0
+offset_right = 712.0
+offset_bottom = 24.0
+color = Color(0.26293245, 0.26293245, 0.26293242, 0.94509804)
+
+[node name="Label" type="Label" parent="Navbar"]
+layout_mode = 0
+offset_left = 3.3637695
+offset_top = -0.09124756
+offset_right = 330.36377
+offset_bottom = 23.908752
+text = "File Viewer: instructions.txt"
+vertical_alignment = 1
+
+[connection signal="gui_input" from="Background/Left/Navbar2" to="." method="_on_navbar_gui_input"]
+[connection signal="mouse_entered" from="Background/Left/Navbar2" to="." method="_on_navbar_mouse_entered"]
+[connection signal="mouse_exited" from="Background/Left/Navbar2" to="." method="_on_navbar_mouse_exited"]
+[connection signal="gui_input" from="Navbar" to="." method="_on_navbar_gui_input"]
+[connection signal="mouse_entered" from="Navbar" to="." method="_on_navbar_mouse_entered"]
+[connection signal="mouse_exited" from="Navbar" to="." method="_on_navbar_mouse_exited"]

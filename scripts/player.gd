@@ -20,6 +20,8 @@ var current_dialog: String = ""
 var dialog_timestamp: String = ""
 var is_dialog_active: bool = false
 
+var should_show_pc_dialog: bool = true
+
 func _ready() -> void:
 	Engine.time_scale = 1
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
@@ -80,7 +82,9 @@ func check_collisions():
 func check_interactions():
 	if Input.is_action_just_pressed("interact") and self.find_child("GameUI").find_child("ComputerUI").visible == false:
 		if current_collider.contains("Desk") and not is_dialog_active:
-			show_dialog("You", "Phew, that was a lot of work yesterday... Let's check if everything's fine with the signal towers...")
+			if should_show_pc_dialog:
+				show_dialog("You", "Phew, that was a lot of work yesterday... Let's check if everything's fine with the signal towers...")
+				should_show_pc_dialog = false
 			self.position = Vector3(37.009, 430.47, 230.202)
 			self.find_child("GameUI").find_child("ComputerUI").visible = true
 			# SHOW DESK MENU

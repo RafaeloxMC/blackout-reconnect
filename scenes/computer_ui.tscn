@@ -1,9 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://dn5eutlmvobb0"]
+[gd_scene load_steps=8 format=3 uid="uid://dn5eutlmvobb0"]
 
 [ext_resource type="Script" uid="uid://dn83uqgi0hu0k" path="res://scripts/computer_ui.gd" id="1_a82rf"]
 [ext_resource type="Texture2D" uid="uid://dqpyid2x6hd2b" path="res://textures/antenna.png" id="1_w3x1j"]
 [ext_resource type="Texture2D" uid="uid://b2tn412tdn4mn" path="res://textures/wallpaper.png" id="2_25mte"]
 [ext_resource type="PackedScene" uid="uid://cs88qbww53pfs" path="res://scenes/signal_manager.tscn" id="4_mr56c"]
+[ext_resource type="Texture2D" uid="uid://d0ac5wid7ts3u" path="res://textures/file.png" id="4_y1jwv"]
+[ext_resource type="PackedScene" uid="uid://duosadeq84jhd" path="res://scenes/file_viewer.tscn" id="6_ltmx6"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_a82rf"]
 font_size = 32
@@ -102,6 +104,36 @@ label_settings = SubResource("LabelSettings_a82rf")
 horizontal_alignment = 1
 autowrap_mode = 3
 
+[node name="FileIcon" type="Control" parent="Screen/Main"]
+anchors_preset = 0
+offset_left = 19.011406
+offset_top = 323.1939
+offset_right = 220.53235
+offset_bottom = 596.9581
+
+[node name="File" type="Sprite2D" parent="Screen/Main/FileIcon"]
+position = Vector2(97, 97)
+scale = Vector2(0.37883937, 0.37883937)
+texture = ExtResource("4_y1jwv")
+
+[node name="Label" type="Label" parent="Screen/Main/FileIcon"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -119.77188
+offset_top = -83.65019
+offset_right = 119.77176
+offset_bottom = 9.349823
+grow_horizontal = 2
+grow_vertical = 0
+text = "instructions.txt"
+label_settings = SubResource("LabelSettings_a82rf")
+horizontal_alignment = 1
+autowrap_mode = 3
+
 [node name="Signal Manager" parent="Screen/Main" instance=ExtResource("4_mr56c")]
 visible = false
 layout_mode = 0
@@ -110,7 +142,18 @@ offset_top = 528.5171
 offset_right = 1586.5247
 offset_bottom = 912.5171
 
+[node name="File Viewer" parent="Screen/Main" instance=ExtResource("6_ltmx6")]
+visible = false
+layout_mode = 0
+offset_left = 410.6464
+offset_top = 247.14828
+offset_right = 1122.6464
+offset_bottom = 631.1483
+
 [connection signal="visibility_changed" from="." to="." method="_on_visibility_changed"]
 [connection signal="gui_input" from="Screen/Main/SignalIcon" to="." method="_on_signal_icon_gui_input"]
 [connection signal="mouse_entered" from="Screen/Main/SignalIcon" to="." method="_on_signal_icon_mouse_entered"]
 [connection signal="mouse_exited" from="Screen/Main/SignalIcon" to="." method="_on_signal_icon_mouse_exited"]
+[connection signal="gui_input" from="Screen/Main/FileIcon" to="." method="_on_file_icon_gui_input"]
+[connection signal="mouse_entered" from="Screen/Main/FileIcon" to="." method="_on_file_icon_mouse_entered"]
+[connection signal="mouse_exited" from="Screen/Main/FileIcon" to="." method="_on_file_icon_mouse_exited"]

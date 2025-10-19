@@ -1,10 +1,5 @@
 extends Control
 
-@onready var password_field: LineEdit = $"Background/Right/Password Field"
-@onready var status: Label = $Background/Right/Status
-@onready var button: Button = $Background/Right/Button
-@onready var lost: Label = $Background/Left/LOST
-
 var mouse_inside: bool = false
 var mouse_offset: Vector2 = Vector2(0, 0)
 var dragging: bool = false
@@ -39,23 +34,3 @@ func _on_navbar_gui_input(event: InputEvent) -> void:
 				dragging = false
 		if event.button_index == MOUSE_BUTTON_RIGHT:
 			dragging = false
-
-
-func _on_button_pressed() -> void:
-	if password_field.text == "8271":
-		button.disabled = true
-		status.text = "DECODING..."
-		await get_tree().create_timer(1).timeout
-		status.text = "AWAITING DATA..."
-		await get_tree().create_timer(1).timeout
-		status.text = "FOUND DATA!"
-		await get_tree().create_timer(1).timeout
-		status.text = "SENDING PAYLOAD TO SIGNAL TOWERS..."
-		await get_tree().create_timer(3).timeout
-		status.text = "SENT!"
-		lost.text = "Connected"
-		lost.label_settings.font_color = Color(0.0, 0.564, 0.0, 1.0)
-		await get_tree().create_timer(1).timeout
-		status.text = "YOU WON!"
-	else:
-		status.text = "Wrong password!"
