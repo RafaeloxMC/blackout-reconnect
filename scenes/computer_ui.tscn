@@ -104,6 +104,10 @@ autowrap_mode = 3
 
 [node name="Signal Manager" parent="Screen/Main" instance=ExtResource("4_mr56c")]
 layout_mode = 0
+offset_left = 874.5247
+offset_top = 528.5171
+offset_right = 1586.5247
+offset_bottom = 912.5171
 
 [connection signal="visibility_changed" from="." to="." method="_on_visibility_changed"]
 [connection signal="gui_input" from="Screen/Main/SignalIcon" to="." method="_on_signal_icon_gui_input"]
