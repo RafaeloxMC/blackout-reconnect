@@ -1,4 +1,6 @@
-[gd_scene load_steps=2 format=3 uid="uid://ca2dlyq7kge1m"]
+[gd_scene load_steps=3 format=3 uid="uid://ca2dlyq7kge1m"]
+
+[ext_resource type="PackedScene" uid="uid://dn5eutlmvobb0" path="res://scenes/computer_ui.tscn" id="1_yubou"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_ojb23"]
 font_size = 24
@@ -24,6 +26,10 @@ text = "o"
 label_settings = SubResource("LabelSettings_ojb23")
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="ComputerUI" parent="." instance=ExtResource("1_yubou")]
+visible = false
+layout_mode = 1
 
 [node name="Dialog" type="Control" parent="."]
 anchors_preset = 0

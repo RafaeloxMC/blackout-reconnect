@@ -1,0 +1,90 @@
+[gd_scene load_steps=2 format=3 uid="uid://dn5eutlmvobb0"]
+
+[ext_resource type="Texture2D" uid="uid://dqpyid2x6hd2b" path="res://textures/antenna.png" id="1_w3x1j"]
+
+[node name="ComputerUI" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Screen" type="Control" parent="."]
+layout_mode = 1
+anchor_left = 0.2953125
+anchor_top = 0.28472224
+anchor_right = 0.3265625
+anchor_bottom = 0.3402778
+offset_left = -137.0
+offset_top = -77.000015
+offset_right = -137.0
+offset_bottom = -77.000015
+scale = Vector2(1.52, 1.52)
+
+[node name="Border" type="ColorRect" parent="Screen"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -77.5
+offset_top = -77.000015
+offset_right = 561.5
+offset_bottom = 347.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Main" type="ColorRect" parent="Screen"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -62.25
+offset_top = -59.500015
+offset_right = 546.25
+offset_bottom = 311.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.14767182, 0.14767179, 0.14767179, 1)
+
+[node name="BSUS" type="Label" parent="Screen/Main"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -35.0
+offset_top = 190.25
+offset_right = 35.0
+offset_bottom = 213.25
+grow_horizontal = 2
+grow_vertical = 2
+text = "BSUS"
+horizontal_alignment = 1
+
+[node name="SignalIcon" type="Control" parent="."]
+anchors_preset = 0
+offset_left = 224.0
+offset_top = 112.0
+offset_right = 264.0
+offset_bottom = 152.0
+
+[node name="Antenna" type="Sprite2D" parent="SignalIcon"]
+scale = Vector2(0.11381757, 0.11381757)
+texture = ExtResource("1_w3x1j")
+
+[node name="Label" type="Label" parent="SignalIcon"]
+layout_mode = 0
+offset_left = -41.0
+offset_top = 22.999985
+offset_right = 42.0
+offset_bottom = 97.999985
+text = "Signal Manager"
+horizontal_alignment = 1
+autowrap_mode = 3

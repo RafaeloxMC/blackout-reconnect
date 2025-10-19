@@ -45,6 +45,9 @@ func _physics_process(delta: float) -> void:
 	if Input.is_action_just_pressed("dialog_next"):
 		hide_dialog()
 
+	if Input.is_action_just_pressed("quit"):
+		self.find_child("GameUI").find_child("ComputerUI").visible = false
+
 	if Input.is_action_just_pressed("jump") and is_on_floor():
 		velocity.y = JUMP_VELOCITY
 
@@ -76,6 +79,7 @@ func check_interactions():
 		if current_collider.contains("Desk") and not is_dialog_active:
 			show_dialog("You", "Phew, that was a lot of work yesterday... Let's check if everything's fine with the signal towers-")
 			self.position = Vector3(37.009, 430.47, 230.202)
+			self.find_child("GameUI").find_child("ComputerUI").visible = true
 			# SHOW DESK MENU
 
 func hide_dialog():
