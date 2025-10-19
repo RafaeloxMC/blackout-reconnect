@@ -35,7 +35,7 @@ func _input(event):
 		if Input.get_mouse_mode() == Input.MOUSE_MODE_VISIBLE and self.find_child("GameUI").find_child("ComputerUI").visible == false:
 			Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	elif event is InputEventKey and event.pressed:
-		if event.keycode == KEY_ESCAPE:
+		if event.keycode == KEY_ESCAPE and self.find_child("GameUI").find_child("ComputerUI").visible == false:
 			Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 
 func _physics_process(delta: float) -> void:
@@ -45,8 +45,9 @@ func _physics_process(delta: float) -> void:
 	if Input.is_action_just_pressed("dialog_next"):
 		hide_dialog()
 
-	if Input.is_action_just_pressed("quit"):
+	if Input.is_action_just_pressed("quit") and self.find_child("GameUI").find_child("ComputerUI").visible == true:
 		self.find_child("GameUI").find_child("ComputerUI").visible = false
+		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 
 	if Input.is_action_just_pressed("jump") and is_on_floor():
 		velocity.y = JUMP_VELOCITY
