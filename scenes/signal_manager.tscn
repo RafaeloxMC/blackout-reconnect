@@ -1,10 +1,16 @@
-[gd_scene load_steps=4 format=3 uid="uid://cs88qbww53pfs"]
+[gd_scene load_steps=6 format=3 uid="uid://cs88qbww53pfs"]
 
 [ext_resource type="Script" uid="uid://doavpgx4oonul" path="res://scripts/signal_manager.gd" id="1_rbo0b"]
 [ext_resource type="Texture2D" uid="uid://dqpyid2x6hd2b" path="res://textures/antenna.png" id="2_60ih8"]
 
+[sub_resource type="LabelSettings" id="LabelSettings_vi1w1"]
+font_size = 12
+
 [sub_resource type="LabelSettings" id="LabelSettings_60ih8"]
 font_color = Color(0.99999994, 0.1895321, 0.18396717, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_t8n0d"]
+font_size = 24
 
 [node name="Signal Manager" type="Control"]
 layout_mode = 3
@@ -22,7 +28,7 @@ offset_right = 712.0
 offset_bottom = 384.0
 color = Color(0.15294118, 0.15294118, 0.15294118, 0.94509804)
 
-[node name="Control" type="Control" parent="Background"]
+[node name="Left" type="Control" parent="Background"]
 layout_mode = 1
 anchor_left = 0.060000002
 anchor_top = 0.238
@@ -35,46 +41,163 @@ offset_bottom = 0.047424316
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="TextureRect" type="TextureRect" parent="Background/Control"]
+[node name="Navbar2" type="ColorRect" parent="Background/Left"]
+layout_mode = 0
+offset_left = 207.33333
+offset_top = -66.666664
+offset_right = 211.66667
+offset_bottom = 292.5754
+color = Color(0.26293245, 0.26293245, 0.26293242, 0.94509804)
+
+[node name="TextureRect" type="TextureRect" parent="Background/Left"]
 layout_mode = 1
-offset_left = 20.333334
+offset_left = 16.333334
 offset_top = -2.0
-offset_right = 532.3333
+offset_right = 528.3333
 offset_bottom = 510.0
 scale = Vector2(0.25, 0.25)
 texture = ExtResource("2_60ih8")
 
-[node name="Connection Status" type="Label" parent="Background/Control"]
+[node name="Connection Status" type="Label" parent="Background/Left"]
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -70.5
+offset_left = -74.5
 offset_top = -82.0
-offset_right = 70.49999
+offset_right = 66.5
 offset_bottom = -59.0
 grow_horizontal = 2
 grow_vertical = 0
 text = "Connection Status"
 
-[node name="LOST" type="Label" parent="Background/Control"]
+[node name="Last Ping" type="Label" parent="Background/Left"]
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -70.5
+offset_left = -74.5
+offset_top = -27.666656
+offset_right = 66.5
+offset_bottom = -4.6666565
+grow_horizontal = 2
+grow_vertical = 0
+text = "Last ping: 2 hours ago"
+label_settings = SubResource("LabelSettings_vi1w1")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="LOST" type="Label" parent="Background/Left"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -74.5
 offset_top = -55.0
-offset_right = 70.5
+offset_right = 66.5
 offset_bottom = -32.0
 grow_horizontal = 2
 grow_vertical = 0
 text = "LOST"
 label_settings = SubResource("LabelSettings_60ih8")
 horizontal_alignment = 1
+
+[node name="Right" type="Control" parent="Background"]
+anchors_preset = 0
+offset_left = 254.6971
+offset_top = 23.908752
+offset_right = 712.03046
+offset_bottom = 383.90875
+
+[node name="Password Header" type="Label" parent="Background/Right"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -135.5
+offset_top = 34.333336
+offset_right = 135.5
+offset_bottom = 68.333336
+grow_horizontal = 2
+text = "Relaunch Signal Station"
+label_settings = SubResource("LabelSettings_t8n0d")
+
+[node name="Password Hint" type="Label" parent="Background/Right"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -164.83334
+offset_top = 77.333336
+offset_right = 164.83334
+offset_bottom = 126.33334
+grow_horizontal = 2
+text = "To relaunch the station. Enter the administrator password to confirm"
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="Status Header" type="Label" parent="Background/Right"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -164.66669
+offset_top = 204.0
+offset_right = 165.0
+offset_bottom = 253.0
+grow_horizontal = 2
+text = "Status:"
+horizontal_alignment = 1
+
+[node name="Status" type="Label" parent="Background/Right"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -164.66669
+offset_top = 224.66667
+offset_right = 165.0
+offset_bottom = 273.6667
+grow_horizontal = 2
+text = "No password provided."
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="TextEdit" type="TextEdit" parent="Background/Right"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -148.83334
+offset_top = -22.166672
+offset_right = 148.83334
+offset_bottom = 22.166672
+grow_horizontal = 2
+grow_vertical = 2
+placeholder_text = "Enter password..."
+
+[node name="Button" type="Button" parent="Background/Right"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -123.00002
+offset_top = -81.33334
+offset_right = 122.83334
+offset_bottom = -19.333374
+grow_horizontal = 2
+grow_vertical = 0
+text = "Launch"
 
 [node name="Navbar" type="ColorRect" parent="."]
 layout_mode = 0
@@ -89,6 +212,9 @@ offset_bottom = 24.0
 text = " Signal Manager"
 vertical_alignment = 1
 
+[connection signal="gui_input" from="Background/Left/Navbar2" to="." method="_on_navbar_gui_input"]
+[connection signal="mouse_entered" from="Background/Left/Navbar2" to="." method="_on_navbar_mouse_entered"]
+[connection signal="mouse_exited" from="Background/Left/Navbar2" to="." method="_on_navbar_mouse_exited"]
 [connection signal="gui_input" from="Navbar" to="." method="_on_navbar_gui_input"]
 [connection signal="mouse_entered" from="Navbar" to="." method="_on_navbar_mouse_entered"]
 [connection signal="mouse_exited" from="Navbar" to="." method="_on_navbar_mouse_exited"]
