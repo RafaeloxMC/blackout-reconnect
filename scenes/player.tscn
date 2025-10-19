@@ -1,10 +1,19 @@
-[gd_scene load_steps=3 format=3 uid="uid://dbl4bxb3jrxx4"]
+[gd_scene load_steps=6 format=3 uid="uid://dbl4bxb3jrxx4"]
 
 [ext_resource type="Script" uid="uid://7ec53w3qkrom" path="res://scripts/player.gd" id="1_3vyb7"]
+[ext_resource type="Shader" uid="uid://d21on2axfmaoo" path="res://shaders/pixelate.gdshader" id="2_g2els"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_uwrxv"]
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_qhqgy"]
+shader = ExtResource("2_g2els")
+
+[sub_resource type="QuadMesh" id="QuadMesh_dqkch"]
+size = Vector2(1280, 720)
+center_offset = Vector3(640, 360, 0)
+
 [node name="Player" type="CharacterBody3D"]
+collision_layer = 2
 script = ExtResource("1_3vyb7")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
@@ -13,3 +22,11 @@ shape = SubResource("CapsuleShape3D_uwrxv")
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 54.104187, -0.49546814)
+
+[node name="RayCast3D" type="RayCast3D" parent="Camera3D"]
+target_position = Vector3(0, 0, -200)
+
+[node name="PixelShader" type="MeshInstance2D" parent="."]
+texture_filter = 1
+material = SubResource("ShaderMaterial_qhqgy")
+mesh = SubResource("QuadMesh_dqkch")

@@ -232,9 +232,9 @@ transform = Transform3D(-28.611118, 0, 52.739017, 0, 60, 0, -52.739017, 0, -28.6
 [node name="Desk" parent="Environment" instance=ExtResource("9_vtaks")]
 transform = Transform3D(-8.742278e-08, 0, 2, 0, 2, 0, -2, 0, -8.742278e-08, 67.2935, 381.64566, 247.90959)
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Environment/Desk"]
+[node name="DeskCollider" type="StaticBody3D" parent="Environment/Desk"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/Desk/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/Desk/DeskCollider"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.2532196, 15.682632, 27.67466)
 shape = SubResource("BoxShape3D_ir15t")
 
