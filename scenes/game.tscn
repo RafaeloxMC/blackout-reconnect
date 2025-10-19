@@ -1,8 +1,7 @@
-[gd_scene load_steps=36 format=3 uid="uid://cekuig2lqcamr"]
+[gd_scene load_steps=33 format=3 uid="uid://cekuig2lqcamr"]
 
 [ext_resource type="Texture2D" uid="uid://bbscio5no8n6l" path="res://images/moonless_golf_4k.exr" id="1_u5sy4"]
 [ext_resource type="PackedScene" uid="uid://dbl4bxb3jrxx4" path="res://scenes/player.tscn" id="2_u5sy4"]
-[ext_resource type="Shader" uid="uid://d21on2axfmaoo" path="res://shaders/pixelate.gdshader" id="3_lbhrr"]
 [ext_resource type="Texture2D" uid="uid://bqfly3rrfoxvl" path="res://textures/aerial_grass_rock_diff_4k.jpg" id="3_lnu2h"]
 [ext_resource type="Texture2D" uid="uid://dnl6p2ojv6xaj" path="res://textures/aerial_grass_rock_nor_gl_4k.jpg" id="4_lbhrr"]
 [ext_resource type="PackedScene" uid="uid://bjjbfcxkutwbv" path="res://models/simple_signal_tower.glb" id="5_iywne"]
@@ -24,13 +23,6 @@ background_mode = 2
 sky = SubResource("Sky_lnu2h")
 tonemap_mode = 2
 glow_enabled = true
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_yqjtg"]
-shader = ExtResource("3_lbhrr")
-
-[sub_resource type="QuadMesh" id="QuadMesh_uwrxv"]
-size = Vector2(1280, 720)
-center_offset = Vector3(640, 360, 0)
 
 [sub_resource type="Gradient" id="Gradient_lbhrr"]
 offsets = PackedFloat32Array(0.2, 1)
@@ -134,23 +126,20 @@ size = Vector3(910.2734, 702.81824, 1924.5134)
 
 [node name="Game" type="Node3D"]
 
-[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+[node name="Player" parent="." instance=ExtResource("2_u5sy4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -39.417103, 459.26263, 230.20198)
+
+[node name="World" type="Node" parent="."]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="World"]
 environment = SubResource("Environment_lbhrr")
 
-[node name="Sun" type="DirectionalLight3D" parent="."]
+[node name="Sun" type="DirectionalLight3D" parent="World/WorldEnvironment"]
 transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 0, 0)
 light_energy = 0.0
 shadow_enabled = true
 
-[node name="Player" parent="." instance=ExtResource("2_u5sy4")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -39.417103, 459.26263, 230.20198)
-
-[node name="MeshInstance2D" type="MeshInstance2D" parent="."]
-texture_filter = 1
-material = SubResource("ShaderMaterial_yqjtg")
-mesh = SubResource("QuadMesh_uwrxv")
-
-[node name="Terrain3D" type="Terrain3D" parent="."]
+[node name="Terrain3D" type="Terrain3D" parent="World"]
 data_directory = "res://data"
 material = SubResource("Terrain3DMaterial_u5sy4")
 assets = SubResource("Terrain3DAssets_kvuet")
@@ -296,94 +285,94 @@ light_energy = 10.0
 omni_range = 50.0
 omni_attenuation = -0.031
 
-[node name="Tree" type="Node" parent="."]
+[node name="Trees" type="Node" parent="."]
 
-[node name="Oak Tree" parent="Tree" instance=ExtResource("11_kvpfn")]
+[node name="Oak Tree" parent="Trees" instance=ExtResource("11_kvpfn")]
 transform = Transform3D(400, 0, 0, 0, 400, 0, 0, 0, 400, 969.9409, 5.784851, 241.80103)
 
-[node name="Oak Tree29" parent="Tree" instance=ExtResource("11_kvpfn")]
+[node name="Oak Tree29" parent="Trees" instance=ExtResource("11_kvpfn")]
 transform = Transform3D(400, 0, 0, 0, 400, 0, 0, 0, 400, 1382.5542, 5.784851, 337.78302)
 
-[node name="Oak Tree30" parent="Tree" instance=ExtResource("11_kvpfn")]
+[node name="Oak Tree30" parent="Trees" instance=ExtResource("11_kvpfn")]
 transform = Transform3D(400, 0, 0, 0, 400, 0, 0, 0, 400, 1276.7318, 5.784851, -115.258575)
 
-[node name="Oak Tree2" parent="Tree" instance=ExtResource("11_kvpfn")]
+[node name="Oak Tree2" parent="Trees" instance=ExtResource("11_kvpfn")]
 transform = Transform3D(400, 0, 0, 0, 400, 0, 0, 0, 400, 1112.9409, 5.784851, 927.5681)
 
-[node name="Oak Tree3" parent="Tree" instance=ExtResource("11_kvpfn")]
+[node name="Oak Tree3" parent="Trees" instance=ExtResource("11_kvpfn")]
 transform = Transform3D(400, 0, 0, 0, 400, 0, 0, 0, 400, 355.87573, 5.784851, 927.5681)
 
-[node name="Oak Tree4" parent="Tree" instance=ExtResource("11_kvpfn")]
+[node name="Oak Tree4" parent="Trees" instance=ExtResource("11_kvpfn")]
 transform = Transform3D(400, 0, 0, 0, 400, 0, 0, 0, 400, -341.76465, 5.784851, 927.5681)
 
-[node name="Oak Tree5" parent="Tree" instance=ExtResource("11_kvpfn")]
+[node name="Oak Tree5" parent="Trees" instance=ExtResource("11_kvpfn")]
 transform = Transform3D(400, 0, 0, 0, 400, 0, 0, 0, 400, -863.0615, 5.784851, -169.03726)
 
-[node name="Oak Tree27" parent="Tree" instance=ExtResource("11_kvpfn")]
+[node name="Oak Tree27" parent="Trees" instance=ExtResource("11_kvpfn")]
 transform = Transform3D(400, 0, 0, 0, 400, 0, 0, 0, 400, -1374.3059, 5.784851, -169.03726)
 
-[node name="Oak Tree28" parent="Tree" instance=ExtResource("11_kvpfn")]
+[node name="Oak Tree28" parent="Trees" instance=ExtResource("11_kvpfn")]
 transform = Transform3D(400, 0, 0, 0, 400, 0, 0, 0, 400, -1517.0221, 5.78479, 301.3837)
 
-[node name="Oak Tree6" parent="Tree" instance=ExtResource("11_kvpfn")]
+[node name="Oak Tree6" parent="Trees" instance=ExtResource("11_kvpfn")]
 transform = Transform3D(400, 0, 0, 0, 400, 0, 0, 0, 400, -1131.8263, 5.784851, -884.628)
 
-[node name="Oak Tree7" parent="Tree" instance=ExtResource("11_kvpfn")]
+[node name="Oak Tree7" parent="Trees" instance=ExtResource("11_kvpfn")]
 transform = Transform3D(400, 0, 0, 0, 400, 0, 0, 0, 400, -639.5297, 5.784851, -618.52246)
 
-[node name="Oak Tree8" parent="Tree" instance=ExtResource("11_kvpfn")]
+[node name="Oak Tree8" parent="Trees" instance=ExtResource("11_kvpfn")]
 transform = Transform3D(400, 0, 0, 0, 400, 0, 0, 0, 400, -639.5297, 5.784851, -1369.2809)
 
-[node name="Oak Tree9" parent="Tree" instance=ExtResource("11_kvpfn")]
+[node name="Oak Tree9" parent="Trees" instance=ExtResource("11_kvpfn")]
 transform = Transform3D(400, 0, 0, 0, 400, 0, 0, 0, 400, -799.33813, 5.784851, -1846.3765)
 
-[node name="Oak Tree10" parent="Tree" instance=ExtResource("11_kvpfn")]
+[node name="Oak Tree10" parent="Trees" instance=ExtResource("11_kvpfn")]
 transform = Transform3D(400, 0, 0, 0, 400, 0, 0, 0, 400, -102.68518, 5.784851, -1224.3815)
 
-[node name="Oak Tree11" parent="Tree" instance=ExtResource("11_kvpfn")]
+[node name="Oak Tree11" parent="Trees" instance=ExtResource("11_kvpfn")]
 transform = Transform3D(400, 0, 0, 0, 400, 0, 0, 0, 400, -229.01868, 5.784851, -607.40704)
 
-[node name="Oak Tree12" parent="Tree" instance=ExtResource("11_kvpfn")]
+[node name="Oak Tree12" parent="Trees" instance=ExtResource("11_kvpfn")]
 transform = Transform3D(400, 0, 0, 0, 400, 0, 0, 0, 400, 242.88391, 5.784851, -735.4199)
 
-[node name="Oak Tree13" parent="Tree" instance=ExtResource("11_kvpfn")]
+[node name="Oak Tree13" parent="Trees" instance=ExtResource("11_kvpfn")]
 transform = Transform3D(400, 0, 0, 0, 400, 0, 0, 0, 400, 489.93524, 5.784851, -1112.0449)
 
-[node name="Oak Tree14" parent="Tree" instance=ExtResource("11_kvpfn")]
+[node name="Oak Tree14" parent="Trees" instance=ExtResource("11_kvpfn")]
 transform = Transform3D(400, 0, 0, 0, 400, 0, 0, 0, 400, 780.93243, 5.784851, -1015.7484)
 
-[node name="Oak Tree15" parent="Tree" instance=ExtResource("11_kvpfn")]
+[node name="Oak Tree15" parent="Trees" instance=ExtResource("11_kvpfn")]
 transform = Transform3D(400, 0, 0, 0, 400, 0, 0, 0, 400, 780.93243, 5.784851, -352.3313)
 
-[node name="Oak Tree16" parent="Tree" instance=ExtResource("11_kvpfn")]
+[node name="Oak Tree16" parent="Trees" instance=ExtResource("11_kvpfn")]
 transform = Transform3D(400, 0, 0, 0, 400, 0, 0, 0, 400, 1176.5403, 5.784851, -352.3313)
 
-[node name="Oak Tree17" parent="Tree" instance=ExtResource("11_kvpfn")]
+[node name="Oak Tree17" parent="Trees" instance=ExtResource("11_kvpfn")]
 transform = Transform3D(400, 0, 0, 0, 400, 0, 0, 0, 400, 1176.5403, 5.784851, -900.87683)
 
-[node name="Oak Tree18" parent="Tree" instance=ExtResource("11_kvpfn")]
+[node name="Oak Tree18" parent="Trees" instance=ExtResource("11_kvpfn")]
 transform = Transform3D(400, 0, 0, 0, 400, 0, 0, 0, 400, 582.30396, 5.78479, 1343.9008)
 
-[node name="Oak Tree19" parent="Tree" instance=ExtResource("11_kvpfn")]
+[node name="Oak Tree19" parent="Trees" instance=ExtResource("11_kvpfn")]
 transform = Transform3D(400, 0, 0, 0, 400, 0, 0, 0, 400, -94.536255, 5.78479, 1343.9008)
 
-[node name="Oak Tree20" parent="Tree" instance=ExtResource("11_kvpfn")]
+[node name="Oak Tree20" parent="Trees" instance=ExtResource("11_kvpfn")]
 transform = Transform3D(400, 0, 0, 0, 400, 0, 0, 0, 400, -611.8634, 5.78479, 245.40686)
 
-[node name="Oak Tree21" parent="Tree" instance=ExtResource("11_kvpfn")]
+[node name="Oak Tree21" parent="Trees" instance=ExtResource("11_kvpfn")]
 transform = Transform3D(400, 0, 0, 0, 400, 0, 0, 0, 400, -836.3109, 5.78479, 1016.7925)
 
-[node name="Oak Tree22" parent="Tree" instance=ExtResource("11_kvpfn")]
+[node name="Oak Tree22" parent="Trees" instance=ExtResource("11_kvpfn")]
 transform = Transform3D(400, 0, 0, 0, 400, 0, 0, 0, 400, 1.7945557, 5.78479, 827.1693)
 
-[node name="Oak Tree23" parent="Tree" instance=ExtResource("11_kvpfn")]
+[node name="Oak Tree23" parent="Trees" instance=ExtResource("11_kvpfn")]
 transform = Transform3D(400, 0, 0, 0, 400, 0, 0, 0, 400, 787.9762, 5.78479, 858.589)
 
-[node name="Oak Tree24" parent="Tree" instance=ExtResource("11_kvpfn")]
+[node name="Oak Tree24" parent="Trees" instance=ExtResource("11_kvpfn")]
 transform = Transform3D(400, 0, 0, 0, 400, 0, 0, 0, 400, 1448.0505, 5.78479, 1123.3586)
 
-[node name="Oak Tree25" parent="Tree" instance=ExtResource("11_kvpfn")]
+[node name="Oak Tree25" parent="Trees" instance=ExtResource("11_kvpfn")]
 transform = Transform3D(400, 0, 0, 0, 400, 0, 0, 0, 400, 1448.0505, 5.78479, 684.7607)
 
-[node name="Oak Tree26" parent="Tree" instance=ExtResource("11_kvpfn")]
+[node name="Oak Tree26" parent="Trees" instance=ExtResource("11_kvpfn")]
 transform = Transform3D(400, 0, 0, 0, 400, 0, 0, 0, 400, -372.95117, 5.784912, -1684.3931)
