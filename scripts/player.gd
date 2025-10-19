@@ -90,7 +90,6 @@ func hide_dialog():
 func show_dialog(author: String, dialog_text: String):
 	if is_dialog_active or dialog_text == current_dialog:
 		return
-	print("Showing dialog!")
 	is_dialog_active = true
 	current_dialog = dialog_text
 	var start_timestamp = Time.get_date_string_from_system()
@@ -103,5 +102,3 @@ func show_dialog(author: String, dialog_text: String):
 			break
 		text.text += character
 		await get_tree().create_timer(0.05).timeout
-	if is_dialog_active and dialog_text == current_dialog:
-		is_dialog_active = false
