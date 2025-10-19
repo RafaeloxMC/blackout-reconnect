@@ -43,7 +43,7 @@ offset_right = 882.0
 offset_bottom = 680.0
 grow_horizontal = 2
 grow_vertical = 0
-color = Color(0.103743516, 0.10374353, 0.103743516, 1)
+color = Color(0.101960786, 0.101960786, 0.101960786, 0.6862745)
 
 [node name="Title" type="Label" parent="Dialog"]
 layout_mode = 0

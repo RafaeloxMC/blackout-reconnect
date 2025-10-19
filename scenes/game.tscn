@@ -380,3 +380,5 @@ transform = Transform3D(400, 0, 0, 0, 400, 0, 0, 0, 400, -372.95117, 5.784912, -
 
 [node name="Dialog Queue" parent="." instance=ExtResource("12_dinhu")]
 transform = Transform3D(10000, 0, 0, 0, 10000, 0, 0, 0, 10000, -44.52112, 520.88226, 205.72853)
+author = "You"
+text = "Sleeping through the day and being awake at night really gets to me. How am I supposed to see my family? Sigh, whatever... It's only for one more month. Let me just get to the desk to do todays' work."
