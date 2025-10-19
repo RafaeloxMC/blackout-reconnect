@@ -221,7 +221,7 @@ shape = SubResource("BoxShape3D_vtaks")
 transform = Transform3D(-28.611118, 0, 52.739017, 0, 60, 0, -52.739017, 0, -28.611118, -1200.4668, -16.172913, 613.96234)
 
 [node name="Desk" parent="Environment" instance=ExtResource("9_vtaks")]
-transform = Transform3D(-8.742278e-08, 0, 2, 0, 2, 0, -2, 0, -8.742278e-08, 67.2935, 381.64566, 247.90959)
+transform = Transform3D(-1.09278474e-07, 0, 2.5, 0, 2.5, 0, -2.5, 0, -1.09278474e-07, 52.36145, 381.64566, 242.78526)
 
 [node name="DeskCollider" type="StaticBody3D" parent="Environment/Desk"]
 
