@@ -85,5 +85,8 @@ func hide_dialog():
 func show_dialog(author: String, dialog_text: String):
 	print("Showing dialog!")
 	dialog.visible = true
-	text.text = dialog_text
 	title.text = author
+	text.text = ""
+	for character in dialog_text:
+		text.text += character
+		await get_tree().create_timer(0.05).timeout
