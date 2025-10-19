@@ -7,18 +7,18 @@ const MOUSE_SENSITIVITY = 0.002
 @onready var camera = $Camera3D
 @onready var ray_cast_3d: RayCast3D = $Camera3D/RayCast3D
 @onready var crosshair: Label = $GameUI/Crosshair
-
 @onready var dialog: Control = $GameUI/Dialog
 @onready var color_rect: ColorRect = $GameUI/Dialog/ColorRect
 @onready var title: Label = $GameUI/Dialog/Title
 @onready var text: Label = $GameUI/Dialog/Text
 
-
 var rotation_x := 0.0
 var rotation_y := 0.0
-
 var current_collider = ""
 var interactables = ["DeskCollider"]
+var current_dialog: String = ""
+var dialog_timestamp: String = ""
+var is_dialog_active: bool = false
 
 func _ready() -> void:
 	Engine.time_scale = 1
@@ -50,7 +50,6 @@ func _physics_process(delta: float) -> void:
 
 	var input_dir := Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
 	var direction := (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
-
 	if direction:
 		velocity.x = direction.x * SPEED
 		velocity.z = direction.z * SPEED
@@ -60,7 +59,6 @@ func _physics_process(delta: float) -> void:
 
 	check_collisions()
 	check_interactions()
-
 	move_and_slide()
 
 func check_collisions():
@@ -75,18 +73,35 @@ func check_collisions():
 
 func check_interactions():
 	if Input.is_action_just_pressed("interact"):
-		if current_collider.contains("Desk"):
+		if current_collider.contains("Desk") and not is_dialog_active:
 			show_dialog("You", "Phew, that was a lot of work yesterday... Let's check if everything's fine with the signal towers-")
+			self.position = Vector3(37.009, 430.47, 230.202)
 			# SHOW DESK MENU
 
 func hide_dialog():
-	dialog.visible = false
-	
+	if is_dialog_active:
+		is_dialog_active = false
+		current_dialog = ""
+		dialog_timestamp = ""
+		dialog.visible = false
+		text.text = ""
+		title.text = ""
+
 func show_dialog(author: String, dialog_text: String):
+	if is_dialog_active or dialog_text == current_dialog:
+		return
 	print("Showing dialog!")
+	is_dialog_active = true
+	current_dialog = dialog_text
+	var start_timestamp = Time.get_date_string_from_system()
+	dialog_timestamp = start_timestamp
 	dialog.visible = true
 	title.text = author
 	text.text = ""
 	for character in dialog_text:
+		if not is_dialog_active or dialog_text != current_dialog or dialog_timestamp != start_timestamp:
+			break
 		text.text += character
 		await get_tree().create_timer(0.05).timeout
+	if is_dialog_active and dialog_text == current_dialog:
+		is_dialog_active = false
