@@ -32,7 +32,7 @@ func _input(event):
 		rotation_x = clamp(rotation_x - event.relative.y * MOUSE_SENSITIVITY, deg_to_rad(-90), deg_to_rad(90))
 		camera.rotation.x = rotation_x
 	elif event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
-		if Input.get_mouse_mode() == Input.MOUSE_MODE_VISIBLE:
+		if Input.get_mouse_mode() == Input.MOUSE_MODE_VISIBLE and self.find_child("GameUI").find_child("ComputerUI").visible == false:
 			Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	elif event is InputEventKey and event.pressed:
 		if event.keycode == KEY_ESCAPE:
@@ -75,7 +75,7 @@ func check_collisions():
 		current_collider = ""
 
 func check_interactions():
-	if Input.is_action_just_pressed("interact"):
+	if Input.is_action_just_pressed("interact") and self.find_child("GameUI").find_child("ComputerUI").visible == false:
 		if current_collider.contains("Desk") and not is_dialog_active:
 			show_dialog("You", "Phew, that was a lot of work yesterday... Let's check if everything's fine with the signal towers-")
 			self.position = Vector3(37.009, 430.47, 230.202)

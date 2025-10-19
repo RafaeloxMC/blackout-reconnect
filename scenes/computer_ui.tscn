@@ -1,6 +1,10 @@
-[gd_scene load_steps=2 format=3 uid="uid://dn5eutlmvobb0"]
+[gd_scene load_steps=4 format=3 uid="uid://dn5eutlmvobb0"]
 
+[ext_resource type="Script" uid="uid://dn83uqgi0hu0k" path="res://scripts/computer_ui.gd" id="1_a82rf"]
 [ext_resource type="Texture2D" uid="uid://dqpyid2x6hd2b" path="res://textures/antenna.png" id="1_w3x1j"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_a82rf"]
+font_size = 25
 
 [node name="ComputerUI" type="Control"]
 layout_mode = 3
@@ -9,6 +13,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_a82rf")
 
 [node name="Screen" type="Control" parent="."]
 layout_mode = 1
@@ -70,21 +75,29 @@ horizontal_alignment = 1
 
 [node name="SignalIcon" type="Control" parent="."]
 anchors_preset = 0
-offset_left = 224.0
-offset_top = 112.0
-offset_right = 264.0
-offset_bottom = 152.0
+offset_left = 184.00002
+offset_top = 80.0
+offset_right = 224.00002
+offset_bottom = 120.0
+scale = Vector2(1.9547719, 2.7437584)
 
 [node name="Antenna" type="Sprite2D" parent="SignalIcon"]
-scale = Vector2(0.11381757, 0.11381757)
+position = Vector2(20.462734, 11.662834)
+scale = Vector2(0.058225498, 0.04148236)
 texture = ExtResource("1_w3x1j")
 
 [node name="Label" type="Label" parent="SignalIcon"]
 layout_mode = 0
-offset_left = -41.0
-offset_top = 22.999985
-offset_right = 42.0
-offset_bottom = 97.999985
+offset_left = -4.092557
+offset_top = 20.409966
+offset_right = 141.9342
+offset_bottom = 95.409966
+scale = Vector2(0.33631223, 0.26204765)
 text = "Signal Manager"
+label_settings = SubResource("LabelSettings_a82rf")
 horizontal_alignment = 1
 autowrap_mode = 3
+
+[connection signal="visibility_changed" from="." to="." method="_on_visibility_changed"]
+[connection signal="mouse_entered" from="SignalIcon" to="." method="_on_signal_icon_mouse_entered"]
+[connection signal="mouse_exited" from="SignalIcon" to="." method="_on_signal_icon_mouse_exited"]
