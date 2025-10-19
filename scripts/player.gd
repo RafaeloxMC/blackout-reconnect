@@ -49,17 +49,19 @@ func _physics_process(delta: float) -> void:
 		self.find_child("GameUI").find_child("ComputerUI").visible = false
 		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 
-	if Input.is_action_just_pressed("jump") and is_on_floor():
-		velocity.y = JUMP_VELOCITY
 
-	var input_dir := Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
-	var direction := (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
-	if direction:
-		velocity.x = direction.x * SPEED
-		velocity.z = direction.z * SPEED
-	else:
-		velocity.x = move_toward(velocity.x, 0, SPEED)
-		velocity.z = move_toward(velocity.z, 0, SPEED)
+	if self.find_child("GameUI").find_child("ComputerUI").visible == false:
+		var input_dir := Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
+		var direction := (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
+		if direction:
+			velocity.x = direction.x * SPEED
+			velocity.z = direction.z * SPEED
+		else:
+			velocity.x = move_toward(velocity.x, 0, SPEED)
+			velocity.z = move_toward(velocity.z, 0, SPEED)
+			
+		if Input.is_action_just_pressed("jump") and is_on_floor():
+			velocity.y = JUMP_VELOCITY
 
 	check_collisions()
 	check_interactions()
@@ -78,7 +80,7 @@ func check_collisions():
 func check_interactions():
 	if Input.is_action_just_pressed("interact") and self.find_child("GameUI").find_child("ComputerUI").visible == false:
 		if current_collider.contains("Desk") and not is_dialog_active:
-			show_dialog("You", "Phew, that was a lot of work yesterday... Let's check if everything's fine with the signal towers-")
+			show_dialog("You", "Phew, that was a lot of work yesterday... Let's check if everything's fine with the signal towers...")
 			self.position = Vector3(37.009, 430.47, 230.202)
 			self.find_child("GameUI").find_child("ComputerUI").visible = true
 			# SHOW DESK MENU
@@ -106,4 +108,4 @@ func show_dialog(author: String, dialog_text: String):
 		if not is_dialog_active or dialog_text != current_dialog or dialog_timestamp != start_timestamp:
 			break
 		text.text += character
-		await get_tree().create_timer(0.05).timeout
+		await get_tree().create_timer(0.025).timeout
