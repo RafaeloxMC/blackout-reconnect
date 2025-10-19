@@ -20,24 +20,17 @@ func _process(_delta: float) -> void:
 
 func _on_navbar_mouse_entered() -> void:
 	mouse_inside = true
-	print("MOUSE ENTERED NAVBAR")
 
 func _on_navbar_mouse_exited() -> void:
 	mouse_inside = false
-	print("MOUSE EXITED NAVBAR")
 
 func _on_navbar_gui_input(event: InputEvent) -> void:
 	if event is InputEventMouseButton:
-		print("MOUSE BTN EVENT FIRED")
 		if event.button_index == MOUSE_BUTTON_LEFT:
-			print("EVENT IS BTN LEFT")
 			if event.pressed and mouse_inside:
-				print("PRESSED AND INSIDE")
 				mouse_offset = get_global_mouse_position() - global_position
 				dragging = true
 			elif not event.pressed:
-				print("NOT PRESSED")
 				dragging = false
 		if event.button_index == MOUSE_BUTTON_RIGHT:
-			print("MOUSE BTN RIGHT")
 			dragging = false
