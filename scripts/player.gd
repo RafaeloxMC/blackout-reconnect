@@ -6,7 +6,13 @@ const MOUSE_SENSITIVITY = 0.002
 
 @onready var camera = $Camera3D
 @onready var ray_cast_3d: RayCast3D = $Camera3D/RayCast3D
-@onready var label: Label = $Label
+@onready var crosshair: Label = $GameUI/Crosshair
+
+@onready var dialog: Control = $GameUI/Dialog
+@onready var color_rect: ColorRect = $GameUI/Dialog/ColorRect
+@onready var title: Label = $GameUI/Dialog/Title
+@onready var text: Label = $GameUI/Dialog/Text
+
 
 var rotation_x := 0.0
 var rotation_y := 0.0
@@ -17,6 +23,7 @@ var interactables = ["DeskCollider"]
 func _ready() -> void:
 	Engine.time_scale = 1
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+	hide_dialog()
 
 func _input(event):
 	if event is InputEventMouseMotion and Input.get_mouse_mode() == Input.MOUSE_MODE_CAPTURED:
@@ -56,9 +63,9 @@ func check_collisions():
 	if ray_cast_3d.is_colliding():
 		current_collider = (ray_cast_3d.get_collider() as Node3D).name
 		if interactables.has(current_collider):
-			label.label_settings.font_color.a = 1
+			crosshair.label_settings.font_color.a = 1
 		else:
-			label.label_settings.font_color.a = 100.0 / 255.0
+			crosshair.label_settings.font_color.a = 100.0 / 255.0
 	else:
 		current_collider = ""
 
@@ -67,3 +74,10 @@ func check_interactions():
 		if current_collider.contains("Desk"):
 			pass
 			# SHOW DESK MENU
+
+func hide_dialog():
+	dialog.visible = false
+	
+func show_dialog(author: String, dialog_text: String):
+	text.text = dialog_text
+	title.text = author
