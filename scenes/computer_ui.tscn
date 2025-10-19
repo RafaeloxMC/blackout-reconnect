@@ -103,6 +103,7 @@ horizontal_alignment = 1
 autowrap_mode = 3
 
 [node name="Signal Manager" parent="Screen/Main" instance=ExtResource("4_mr56c")]
+visible = false
 layout_mode = 0
 offset_left = 874.5247
 offset_top = 528.5171
