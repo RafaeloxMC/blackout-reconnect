@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=3 uid="uid://cekuig2lqcamr"]
+[gd_scene load_steps=34 format=3 uid="uid://cekuig2lqcamr"]
 
 [ext_resource type="Texture2D" uid="uid://bbscio5no8n6l" path="res://images/moonless_golf_4k.exr" id="1_u5sy4"]
 [ext_resource type="PackedScene" uid="uid://dbl4bxb3jrxx4" path="res://scenes/player.tscn" id="2_u5sy4"]
@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://bxaxkmsohdcux" path="res://models/bed.glb" id="10_kvpfn"]
 [ext_resource type="PackedScene" uid="uid://dbw826sawu4xq" path="res://models/old_lamp.glb" id="11_dinhu"]
 [ext_resource type="PackedScene" uid="uid://58beud7pcspt" path="res://models/oak_trees.glb" id="11_kvpfn"]
+[ext_resource type="PackedScene" uid="uid://cq5gq1rh60hfv" path="res://scenes/dialog_queue.tscn" id="12_dinhu"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_gee14"]
 panorama = ExtResource("1_u5sy4")
@@ -376,3 +377,6 @@ transform = Transform3D(400, 0, 0, 0, 400, 0, 0, 0, 400, 1448.0505, 5.78479, 684
 
 [node name="Oak Tree26" parent="Trees" instance=ExtResource("11_kvpfn")]
 transform = Transform3D(400, 0, 0, 0, 400, 0, 0, 0, 400, -372.95117, 5.784912, -1684.3931)
+
+[node name="Dialog Queue" parent="." instance=ExtResource("12_dinhu")]
+transform = Transform3D(10000, 0, 0, 0, 10000, 0, 0, 0, 10000, -44.52112, 520.88226, 205.72853)

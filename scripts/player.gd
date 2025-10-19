@@ -73,12 +73,14 @@ func check_collisions():
 func check_interactions():
 	if Input.is_action_just_pressed("interact"):
 		if current_collider.contains("Desk"):
-			pass
+			show_dialog("You", "Phew, that was a lot of work yesterday... Let's check if everything's fine with the signal towers-")
 			# SHOW DESK MENU
 
 func hide_dialog():
 	dialog.visible = false
 	
 func show_dialog(author: String, dialog_text: String):
+	print("Showing dialog!")
+	dialog.visible = true
 	text.text = dialog_text
 	title.text = author
