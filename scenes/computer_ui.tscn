@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://dn83uqgi0hu0k" path="res://scripts/computer_ui.gd" id="1_a82rf"]
 [ext_resource type="Texture2D" uid="uid://dqpyid2x6hd2b" path="res://textures/antenna.png" id="1_w3x1j"]
 [ext_resource type="Texture2D" uid="uid://b2tn412tdn4mn" path="res://textures/wallpaper.png" id="2_25mte"]
-[ext_resource type="Script" uid="uid://doavpgx4oonul" path="res://scripts/signal_manager.gd" id="4_mr56c"]
+[ext_resource type="PackedScene" uid="uid://cs88qbww53pfs" path="res://scenes/signal_manager.tscn" id="4_mr56c"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_a82rf"]
 font_size = 32
@@ -102,38 +102,10 @@ label_settings = SubResource("LabelSettings_a82rf")
 horizontal_alignment = 1
 autowrap_mode = 3
 
-[node name="Signal Manager" type="Control" parent="Screen/Main"]
-anchors_preset = 0
-offset_left = 597.9087
-offset_top = 456.27374
-offset_right = 1309.9087
-offset_bottom = 840.27374
-scale = Vector2(3, 3)
-script = ExtResource("4_mr56c")
-
-[node name="Background" type="ColorRect" parent="Screen/Main/Signal Manager"]
+[node name="Signal Manager" parent="Screen/Main" instance=ExtResource("4_mr56c")]
 layout_mode = 0
-offset_right = 712.0
-offset_bottom = 384.0
-color = Color(0.15294118, 0.15294118, 0.15294118, 0.94509804)
-
-[node name="Navbar" type="ColorRect" parent="Screen/Main/Signal Manager"]
-layout_mode = 0
-offset_right = 712.0
-offset_bottom = 24.0
-color = Color(0.26293245, 0.26293245, 0.26293242, 0.94509804)
-
-[node name="Label" type="Label" parent="Screen/Main/Signal Manager/Navbar"]
-layout_mode = 0
-offset_right = 327.0
-offset_bottom = 24.0
-text = " Signal Manager"
-vertical_alignment = 1
 
 [connection signal="visibility_changed" from="." to="." method="_on_visibility_changed"]
 [connection signal="gui_input" from="Screen/Main/SignalIcon" to="." method="_on_signal_icon_gui_input"]
 [connection signal="mouse_entered" from="Screen/Main/SignalIcon" to="." method="_on_signal_icon_mouse_entered"]
 [connection signal="mouse_exited" from="Screen/Main/SignalIcon" to="." method="_on_signal_icon_mouse_exited"]
-[connection signal="gui_input" from="Screen/Main/Signal Manager/Navbar" to="Screen/Main/Signal Manager" method="_on_navbar_gui_input"]
-[connection signal="mouse_entered" from="Screen/Main/Signal Manager/Navbar" to="Screen/Main/Signal Manager" method="_on_navbar_mouse_entered"]
-[connection signal="mouse_exited" from="Screen/Main/Signal Manager/Navbar" to="Screen/Main/Signal Manager" method="_on_navbar_mouse_exited"]
