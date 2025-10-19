@@ -144,6 +144,7 @@ shadow_enabled = true
 data_directory = "res://data"
 material = SubResource("Terrain3DMaterial_u5sy4")
 assets = SubResource("Terrain3DAssets_kvuet")
+free_editor_textures = false
 top_level = true
 metadata/_edit_lock_ = true
 
