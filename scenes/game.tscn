@@ -221,7 +221,7 @@ shape = SubResource("BoxShape3D_vtaks")
 transform = Transform3D(-28.611118, 0, 52.739017, 0, 60, 0, -52.739017, 0, -28.611118, -1200.4668, -16.172913, 613.96234)
 
 [node name="Desk" parent="Environment" instance=ExtResource("9_vtaks")]
-transform = Transform3D(-1.09278474e-07, 0, 2.5, 0, 2.5, 0, -2.5, 0, -1.09278474e-07, 52.36145, 381.64566, 242.78526)
+transform = Transform3D(-9.397949e-08, 0, 2.15, 0, 2.15, 0, -2.15, 0, -9.397949e-08, 57.194122, 381.64566, 242.78526)
 
 [node name="DeskCollider" type="StaticBody3D" parent="Environment/Desk"]
 
@@ -261,7 +261,7 @@ omni_range = 50.0
 omni_attenuation = -0.031
 
 [node name="Old Lamp4" parent="Environment/Lamps" instance=ExtResource("11_dinhu")]
-transform = Transform3D(500, 0, 0, 0, 500, 0, 0, 0, 500, 137.94768, 440.59213, 238.37291)
+transform = Transform3D(500, 0, 0, 0, 500, 0, 0, 0, 500, 137.94768, 446.03287, 202.37367)
 
 [node name="OmniLight3D" type="OmniLight3D" parent="Environment/Lamps/Old Lamp4"]
 transform = Transform3D(0.0019999999, 0, 0, 0, 0.0019999999, 0, 0, 0, 0.0019999999, 0, 0.020627022, 0)
