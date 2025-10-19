@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://dbl4bxb3jrxx4"]
+[gd_scene load_steps=7 format=3 uid="uid://dbl4bxb3jrxx4"]
 
 [ext_resource type="Script" uid="uid://7ec53w3qkrom" path="res://scripts/player.gd" id="1_3vyb7"]
 [ext_resource type="Shader" uid="uid://d21on2axfmaoo" path="res://shaders/pixelate.gdshader" id="2_g2els"]
@@ -11,6 +11,10 @@ shader = ExtResource("2_g2els")
 [sub_resource type="QuadMesh" id="QuadMesh_dqkch"]
 size = Vector2(1280, 720)
 center_offset = Vector3(640, 360, 0)
+
+[sub_resource type="LabelSettings" id="LabelSettings_g2els"]
+font_size = 24
+font_color = Color(1, 1, 1, 0.39215687)
 
 [node name="Player" type="CharacterBody3D"]
 collision_layer = 2
@@ -30,3 +34,15 @@ target_position = Vector3(0, 0, -200)
 texture_filter = 1
 material = SubResource("ShaderMaterial_qhqgy")
 mesh = SubResource("QuadMesh_dqkch")
+
+[node name="Label" type="Label" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+text = "o"
+label_settings = SubResource("LabelSettings_g2els")
+horizontal_alignment = 1
+vertical_alignment = 1

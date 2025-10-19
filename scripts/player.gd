@@ -6,11 +6,13 @@ const MOUSE_SENSITIVITY = 0.002
 
 @onready var camera = $Camera3D
 @onready var ray_cast_3d: RayCast3D = $Camera3D/RayCast3D
+@onready var label: Label = $Label
 
 var rotation_x := 0.0
 var rotation_y := 0.0
 
 var current_collider = ""
+var interactables = ["DeskCollider"]
 
 func _ready() -> void:
 	Engine.time_scale = 1
@@ -53,6 +55,10 @@ func _physics_process(delta: float) -> void:
 func check_collisions():
 	if ray_cast_3d.is_colliding():
 		current_collider = (ray_cast_3d.get_collider() as Node3D).name
+		if interactables.has(current_collider):
+			label.label_settings.font_color.a = 1
+		else:
+			label.label_settings.font_color.a = 100.0 / 255.0
 	else:
 		current_collider = ""
 
