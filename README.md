@@ -2,6 +2,13 @@
 
 You're a technician living in a fire watch - When all the signal towers go down, it's up to you to save the country.
 
+## Full Playthrough Video - WARNING: SPOILERS
+
+<video controls width="720" poster="https://raw.githubusercontent.com/RafaeloxMC/blackout-reconnect/main/textures/wallpaper.png">
+  <source src="https://raw.githubusercontent.com/RafaeloxMC/blackout-reconnect/main/showcase.mp4" type="video/mp4">
+  Your browser does not support the video tag. You can watch the video here: <a href="./showcase.mp4">showcase.mp4</a>
+</video>
+
 ## Tech Stack
 
 Game is made in Godot 4.5
