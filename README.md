@@ -4,10 +4,9 @@ You're a technician living in a fire watch - When all the signal towers go down,
 
 ## Full Playthrough Video - WARNING: SPOILERS
 
-<video controls width="720" poster="https://raw.githubusercontent.com/RafaeloxMC/blackout-reconnect/main/textures/wallpaper.png">
-  <source src="https://raw.githubusercontent.com/RafaeloxMC/blackout-reconnect/main/showcase.mp4" type="video/mp4">
-  Your browser does not support the video tag. You can watch the video here: <a href="./showcase.mp4">showcase.mp4</a>
-</video>
+[![Play Showcase](https://raw.githubusercontent.com/RafaeloxMC/blackout-reconnect/main/textures/wallpaper.png)](https://raw.githubusercontent.com/RafaeloxMC/blackout-reconnect/main/showcase.mp4)
+
+You can also download or view the video directly: https://raw.githubusercontent.com/RafaeloxMC/blackout-reconnect/main/showcase.mp4
 
 ## Tech Stack
 
