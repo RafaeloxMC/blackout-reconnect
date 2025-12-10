@@ -8,7 +8,7 @@ const MOUSE_SENSITIVITY = 0.002
 @onready var ray_cast_3d: RayCast3D = $Camera3D/RayCast3D
 @onready var crosshair: Label = $GameUI/Crosshair
 @onready var dialog: Control = $GameUI/Dialog
-@onready var color_rect: ColorRect = $GameUI/Dialog/ColorRect
+@onready var panel: Panel = $GameUI/Dialog/Panel
 @onready var title: Label = $GameUI/Dialog/Title
 @onready var text: Label = $GameUI/Dialog/Text
 
