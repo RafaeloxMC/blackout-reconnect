@@ -1,5 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://ca2dlyq7kge1m"]
+[gd_scene load_steps=4 format=3 uid="uid://ca2dlyq7kge1m"]
 
+[ext_resource type="Script" uid="uid://dj2qeqnp8vamb" path="res://scripts/fps.gd" id="1_rns2u"]
 [ext_resource type="PackedScene" uid="uid://dn5eutlmvobb0" path="res://scenes/computer_ui.tscn" id="1_yubou"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_ojb23"]
@@ -26,6 +27,22 @@ text = "o"
 label_settings = SubResource("LabelSettings_ojb23")
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="FPS" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 1137.0
+offset_bottom = -686.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+text = "123 FPS"
+label_settings = SubResource("LabelSettings_ojb23")
+horizontal_alignment = 2
+vertical_alignment = 1
+script = ExtResource("1_rns2u")
 
 [node name="ComputerUI" parent="." instance=ExtResource("1_yubou")]
 visible = false
