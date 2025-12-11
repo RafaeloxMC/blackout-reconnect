@@ -7,7 +7,7 @@ extends Node
 
 func call_packed(scene: PackedScene) -> void:
 	transition.fwd()
-	await get_tree().create_timer(transition.duration).timeout
+	await get_tree().create_timer(2 / transition.speed_multiplier).timeout
 	get_tree().change_scene_to_packed(scene)
 	scene_history.append(scene)
 	transition.rev()

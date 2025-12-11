@@ -1,7 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://dl8t2epwy7e51"]
+[gd_scene load_steps=7 format=3 uid="uid://dl8t2epwy7e51"]
 
 [ext_resource type="Script" uid="uid://b8qtu2v7khe85" path="res://scripts/scene_manager.gd" id="1_we8k5"]
 [ext_resource type="PackedScene" uid="uid://dj7ub72yvowmt" path="res://scenes/transition.tscn" id="2_b81s6"]
+[ext_resource type="PackedScene" uid="uid://cekuig2lqcamr" path="res://scenes/game.tscn" id="2_q7wi7"]
+[ext_resource type="PackedScene" uid="uid://cxmheob7ku8ly" path="res://scenes/main_menu.tscn" id="3_6k21d"]
 [ext_resource type="Shader" uid="uid://c6d5rtpsb4onx" path="res://shaders/transition.gdshader" id="3_h7lqg"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_q7wi7"]
@@ -15,6 +17,11 @@ shader_parameter/disable_pixel = false
 
 [node name="SceneManager" type="Node"]
 script = ExtResource("1_we8k5")
+scenes = Dictionary[String, PackedScene]({
+"game": ExtResource("2_q7wi7"),
+"main_menu": ExtResource("3_6k21d")
+})
+scene_history = Array[PackedScene]([ExtResource("3_6k21d")])
 
 [node name="Transition" parent="." instance=ExtResource("2_b81s6")]
 material = SubResource("ShaderMaterial_q7wi7")

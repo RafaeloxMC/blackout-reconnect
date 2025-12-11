@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Blackout: Reconnect"
-run/main_scene="uid://cekuig2lqcamr"
+run/main_scene="uid://cxmheob7ku8ly"
 config/features=PackedStringArray("4.5", "GL Compatibility")
 config/icon="res://icon.svg"
 

@@ -1,5 +1,6 @@
-[gd_scene load_steps=7 format=3 uid="uid://cxmheob7ku8ly"]
+[gd_scene load_steps=8 format=3 uid="uid://cxmheob7ku8ly"]
 
+[ext_resource type="Script" uid="uid://1h2v5yo7wfcl" path="res://scripts/main_menu.gd" id="1_bqqt6"]
 [ext_resource type="PackedScene" uid="uid://7egpkb2m1tjn" path="res://scenes/world.tscn" id="1_l6cm7"]
 [ext_resource type="PackedScene" uid="uid://cvds73xayrauk" path="res://scenes/pixel_shader.tscn" id="2_ekxnf"]
 
@@ -75,6 +76,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_bqqt6")
 
 [node name="PixelShader" parent="." instance=ExtResource("2_ekxnf")]
 
@@ -92,7 +94,7 @@ offset_bottom = 88.0
 text = "Blackout: Reconnect"
 label_settings = SubResource("LabelSettings_l6cm7")
 
-[node name="Button" type="Button" parent="UIElements"]
+[node name="Play" type="Button" parent="UIElements"]
 layout_mode = 1
 anchors_preset = 4
 anchor_top = 0.5
@@ -104,7 +106,7 @@ grow_vertical = 2
 theme_override_font_sizes/font_size = 32
 text = "Play"
 
-[node name="Button2" type="Button" parent="UIElements"]
+[node name="Quit" type="Button" parent="UIElements"]
 layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
@@ -126,3 +128,6 @@ libraries = {
 &"": SubResource("AnimationLibrary_bqqt6")
 }
 autoplay = "cinematic"
+
+[connection signal="pressed" from="UIElements/Play" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="UIElements/Quit" to="." method="_on_quit_pressed"]

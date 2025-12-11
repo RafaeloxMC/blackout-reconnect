@@ -5,12 +5,10 @@ extends ColorRect
 var height: float = -1.0
 var shader_direction: bool = true # true = fwd; false = rev
 var playing: bool = false
-# Called when the node enters the scene tree for the first time.
+
 func _ready():
 	rev()
 
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	var mat = material
 	if playing:
@@ -23,7 +21,6 @@ func _process(delta: float) -> void:
 		else:
 			print("NO MATERIAL")
 		if abs(height) == 1:
-			print("Finished playing!")
 			playing = false
 
 func fwd() -> void:
