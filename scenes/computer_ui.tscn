@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://dn5eutlmvobb0"]
+[gd_scene load_steps=9 format=3 uid="uid://dn5eutlmvobb0"]
 
 [ext_resource type="Script" uid="uid://dn83uqgi0hu0k" path="res://scripts/computer_ui.gd" id="1_a82rf"]
 [ext_resource type="Texture2D" uid="uid://dqpyid2x6hd2b" path="res://textures/antenna.png" id="1_w3x1j"]
@@ -8,6 +8,9 @@
 [ext_resource type="PackedScene" uid="uid://duosadeq84jhd" path="res://scenes/file_viewer.tscn" id="6_ltmx6"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_a82rf"]
+font_size = 32
+
+[sub_resource type="LabelSettings" id="LabelSettings_ltmx6"]
 font_size = 32
 
 [node name="ComputerUI" type="Control"]
@@ -130,7 +133,7 @@ offset_bottom = 9.349823
 grow_horizontal = 2
 grow_vertical = 0
 text = "instructions.txt"
-label_settings = SubResource("LabelSettings_a82rf")
+label_settings = SubResource("LabelSettings_ltmx6")
 horizontal_alignment = 1
 autowrap_mode = 3
 
