@@ -1,6 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://cxmheob7ku8ly"]
+[gd_scene load_steps=7 format=3 uid="uid://cxmheob7ku8ly"]
 
 [ext_resource type="PackedScene" uid="uid://7egpkb2m1tjn" path="res://scenes/world.tscn" id="1_l6cm7"]
+[ext_resource type="PackedScene" uid="uid://cvds73xayrauk" path="res://scenes/pixel_shader.tscn" id="2_ekxnf"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_l6cm7"]
 font_size = 64
@@ -117,6 +118,8 @@ text = "Quit"
 [node name="Camera3D" type="Camera3D" parent="World"]
 transform = Transform3D(-0.8712138, -0.21288486, 0.44234204, 0, 0.90107703, 0.4336591, -0.49090368, 0.37780982, -0.7850308, 164.73047, 801.691, -734.6983)
 current = true
+
+[node name="PixelShader" parent="World/Camera3D" instance=ExtResource("2_ekxnf")]
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="World/Camera3D"]
 libraries = {

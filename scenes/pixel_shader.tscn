@@ -1,0 +1,15 @@
+[gd_scene load_steps=4 format=3 uid="uid://cvds73xayrauk"]
+
+[ext_resource type="Shader" uid="uid://d21on2axfmaoo" path="res://shaders/pixelate.gdshader" id="1_yojpb"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_qhqgy"]
+shader = ExtResource("1_yojpb")
+
+[sub_resource type="QuadMesh" id="QuadMesh_dqkch"]
+size = Vector2(1280, 720)
+center_offset = Vector3(640, 360, 0)
+
+[node name="PixelShader" type="MeshInstance2D"]
+texture_filter = 1
+material = SubResource("ShaderMaterial_qhqgy")
+mesh = SubResource("QuadMesh_dqkch")
