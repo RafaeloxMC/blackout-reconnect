@@ -1,46 +1,104 @@
 name: "godot-ci export"
-on: push
 
-# NOTE: If your `project.godot` is at the repository root, set `PROJECT_PATH` below to ".".
+on: push
 
 env:
   GODOT_VERSION: 4.5
-  EXPORT_NAME: index
   PROJECT_PATH: .
 
 jobs:
-  export-web:
-    name: Web Export
-    runs-on: ubuntu-24.04  # Use 24.04 with godot 4
+  export-desktop:
+    name: Export Desktop Builds
+    runs-on: ubuntu-24.04
     container:
       image: barichello/godot-ci:4.5
+
     steps:
       - name: Checkout
         uses: actions/checkout@v4
         with:
           lfs: true
-      - name: Setup
+
+      - name: Setup Export Templates
         run: |
           mkdir -v -p ~/.local/share/godot/export_templates/
-          mv /root/.local/share/godot/export_templates/${GODOT_VERSION}.stable ~/.local/share/godot/export_templates/${GODOT_VERSION}.stable
-      - name: Web Build
+          mv /root/.local/share/godot/export_templates/${GODOT_VERSION}.stable \
+             ~/.local/share/godot/export_templates/${GODOT_VERSION}.stable
+
+      - name: Import Project
         run: |
-          mkdir -v -p build/web
-          EXPORT_DIR="$(readlink -f build)"
           cd $PROJECT_PATH
           godot --headless --verbose --import
-          godot --headless --verbose --export-release "Web" "$EXPORT_DIR/web/index.html"
-      - name: Upload Artifact
+
+      - name: Create Build Directories
+        run: |
+          mkdir -p build/windows
+          mkdir -p build/linux
+
+      - name: Export Windows Desktop
+        run: |
+          EXPORT_DIR="$(readlink -f build/windows)"
+          cd $PROJECT_PATH
+          godot --headless --verbose --export-release "Windows Desktop" "$EXPORT_DIR/blackout-reconnect.exe"
+
+      - name: Export Linux/X11
+        run: |
+          EXPORT_DIR="$(readlink -f build/linux)"
+          cd $PROJECT_PATH
+          godot --headless --verbose --export-release "Linux" "$EXPORT_DIR/blackout-reconnect.x86_64"
+
+      - name: Upload Windows Artifact
         uses: actions/upload-artifact@v4
         with:
-          name: web
-          path: build/web
-      - name: Install rsync 📚
-        run: |
-          apt-get update && apt-get install -y rsync
-      - name: Deploy to GitHub Pages 🚀
-        uses: JamesIves/github-pages-deploy-action@releases/v4
+          name: windows-build
+          path: build/windows
+
+      - name: Upload Linux Artifact
+        uses: actions/upload-artifact@v4
         with:
-          branch: gh-pages # The branch the action should deploy to.
-          folder: build/web # The folder the action should deploy.
-          clean: true
+          name: linux-build
+          path: build/linux
+
+  release:
+    name: Publish Release
+    needs: export-desktop
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Download Artifacts
+        uses: actions/download-artifact@v4
+        with:
+          path: builds
+
+      - name: Zip Builds
+        run: |
+          cd builds
+
+          # Windows ZIP
+          zip -r blackout-reconnect-windows.zip windows-build
+
+          # Linux ZIP
+          zip -r blackout-reconnect-linux.zip linux-build
+
+      - name: Generate SHA256 hashes
+        run: |
+          cd builds
+
+          sha256sum blackout-reconnect-windows.zip > blackout-reconnect-windows.sha256
+          sha256sum blackout-reconnect-linux.zip > blackout-reconnect-linux.sha256
+
+      - name: Publish to 'latest-commit' Release
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: latest-commit
+          name: Build From Latest Commit
+          files: |
+            builds/blackout-reconnect-windows.zip
+            builds/blackout-reconnect-linux.zip
+            builds/blackout-reconnect-windows.sha256
+            builds/blackout-reconnect-linux.sha256
+          draft: false
+          prerelease: true
+          generate_release_notes: false
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
