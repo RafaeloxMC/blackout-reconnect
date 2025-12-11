@@ -1,6 +1,6 @@
 extends ColorRect
 
-@export var speed_multiplier: float = 1.5
+@export var speed_multiplier: float = 2
 
 var height: float = -1.0
 var shader_direction: bool = true # true = fwd; false = rev
