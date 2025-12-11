@@ -70,14 +70,33 @@ jobs:
         with:
           path: builds
 
+      - name: Zip Builds
+        run: |
+          cd builds
+
+          # Windows ZIP
+          zip -r blackout-reconnect-windows.zip windows-build
+
+          # Linux ZIP
+          zip -r blackout-reconnect-linux.zip linux-build
+
+      - name: Generate SHA256 hashes
+        run: |
+          cd builds
+
+          sha256sum blackout-reconnect-windows.zip > blackout-reconnect-windows.sha256
+          sha256sum blackout-reconnect-linux.zip > blackout-reconnect-linux.sha256
+
       - name: Publish to 'latest-commit' Release
         uses: softprops/action-gh-release@v2
         with:
           tag_name: latest-commit
           name: Build From Latest Commit
           files: |
-            builds/windows/**/*
-            builds/linux/**/*
+            builds/blackout-reconnect-windows.zip
+            builds/blackout-reconnect-linux.zip
+            builds/blackout-reconnect-windows.sha256
+            builds/blackout-reconnect-linux.sha256
           draft: false
           prerelease: true
           generate_release_notes: false
