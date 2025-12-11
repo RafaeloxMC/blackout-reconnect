@@ -76,6 +76,8 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
+[node name="PixelShader" parent="." instance=ExtResource("2_ekxnf")]
+
 [node name="UIElements" type="Control" parent="."]
 anchors_preset = 0
 offset_left = 64.0
@@ -118,8 +120,6 @@ text = "Quit"
 [node name="Camera3D" type="Camera3D" parent="World"]
 transform = Transform3D(-0.8712138, -0.21288486, 0.44234204, 0, 0.90107703, 0.4336591, -0.49090368, 0.37780982, -0.7850308, 164.73047, 801.691, -734.6983)
 current = true
-
-[node name="PixelShader" parent="World/Camera3D" instance=ExtResource("2_ekxnf")]
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="World/Camera3D"]
 libraries = {
