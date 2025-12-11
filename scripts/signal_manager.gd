@@ -59,3 +59,6 @@ func _on_button_pressed() -> void:
 		status.text = "YOU WON!"
 	else:
 		status.text = "Wrong password!"
+
+func _on_close_nav_pressed() -> void:
+	self.hide()

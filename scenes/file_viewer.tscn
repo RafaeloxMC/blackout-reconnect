@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://duosadeq84jhd"]
+[gd_scene load_steps=8 format=3 uid="uid://duosadeq84jhd"]
 
 [ext_resource type="Script" uid="uid://ddeelq2k8vbb8" path="res://scripts/file_viewer.gd" id="1_s34fm"]
 
@@ -7,6 +7,14 @@ font_size = 12
 
 [sub_resource type="LabelSettings" id="LabelSettings_t8n0d"]
 font_size = 24
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_s34fm"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4xp71"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_448bo"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_a81r2"]
 
 [node name="File Viewer" type="Control"]
 layout_mode = 3
@@ -133,9 +141,30 @@ offset_bottom = 23.908752
 text = "File Viewer: instructions.txt"
 vertical_alignment = 1
 
+[node name="CloseNav" type="Button" parent="Navbar"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -25.635986
+offset_top = -11.5
+offset_right = 0.030700684
+offset_bottom = 11.757904
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_font_sizes/font_size = 10
+theme_override_styles/normal = SubResource("StyleBoxFlat_s34fm")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_4xp71")
+theme_override_styles/hover = SubResource("StyleBoxFlat_448bo")
+theme_override_styles/focus = SubResource("StyleBoxFlat_a81r2")
+text = "X"
+
 [connection signal="gui_input" from="Background/Left/Navbar2" to="." method="_on_navbar_gui_input"]
 [connection signal="mouse_entered" from="Background/Left/Navbar2" to="." method="_on_navbar_mouse_entered"]
 [connection signal="mouse_exited" from="Background/Left/Navbar2" to="." method="_on_navbar_mouse_exited"]
 [connection signal="gui_input" from="Navbar" to="." method="_on_navbar_gui_input"]
 [connection signal="mouse_entered" from="Navbar" to="." method="_on_navbar_mouse_entered"]
 [connection signal="mouse_exited" from="Navbar" to="." method="_on_navbar_mouse_exited"]
+[connection signal="pressed" from="Navbar/CloseNav" to="." method="_on_close_nav_pressed"]

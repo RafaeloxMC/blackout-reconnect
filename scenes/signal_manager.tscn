@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://cs88qbww53pfs"]
+[gd_scene load_steps=7 format=3 uid="uid://cs88qbww53pfs"]
 
 [ext_resource type="Script" uid="uid://doavpgx4oonul" path="res://scripts/signal_manager.gd" id="1_rbo0b"]
 [ext_resource type="Texture2D" uid="uid://dqpyid2x6hd2b" path="res://textures/antenna.png" id="2_60ih8"]
@@ -11,6 +11,8 @@ font_color = Color(0.99999994, 0.1895321, 0.18396717, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_t8n0d"]
 font_size = 24
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_60ih8"]
 
 [node name="Signal Manager" type="Control"]
 layout_mode = 3
@@ -212,6 +214,26 @@ offset_bottom = 24.0
 text = " Signal Manager"
 vertical_alignment = 1
 
+[node name="CloseNav" type="Button" parent="Navbar"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -25.635986
+offset_top = -11.757904
+offset_right = 0.36376953
+offset_bottom = 12.242096
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_font_sizes/font_size = 10
+theme_override_styles/normal = SubResource("StyleBoxFlat_60ih8")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_60ih8")
+theme_override_styles/hover = SubResource("StyleBoxFlat_60ih8")
+theme_override_styles/focus = SubResource("StyleBoxFlat_60ih8")
+text = "X"
+
 [connection signal="gui_input" from="Background/Left/Navbar2" to="." method="_on_navbar_gui_input"]
 [connection signal="mouse_entered" from="Background/Left/Navbar2" to="." method="_on_navbar_mouse_entered"]
 [connection signal="mouse_exited" from="Background/Left/Navbar2" to="." method="_on_navbar_mouse_exited"]
@@ -219,3 +241,4 @@ vertical_alignment = 1
 [connection signal="gui_input" from="Navbar" to="." method="_on_navbar_gui_input"]
 [connection signal="mouse_entered" from="Navbar" to="." method="_on_navbar_mouse_entered"]
 [connection signal="mouse_exited" from="Navbar" to="." method="_on_navbar_mouse_exited"]
+[connection signal="pressed" from="Navbar/CloseNav" to="." method="_on_close_nav_pressed"]

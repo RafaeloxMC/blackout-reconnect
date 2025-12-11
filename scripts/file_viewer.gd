@@ -34,3 +34,6 @@ func _on_navbar_gui_input(event: InputEvent) -> void:
 				dragging = false
 		if event.button_index == MOUSE_BUTTON_RIGHT:
 			dragging = false
+
+func _on_close_nav_pressed() -> void:
+	self.hide()
