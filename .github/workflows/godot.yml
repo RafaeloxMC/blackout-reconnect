@@ -12,6 +12,7 @@ jobs:
     runs-on: ubuntu-24.04
     container:
       image: barichello/godot-ci:4.5
+
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -69,11 +70,16 @@ jobs:
         with:
           path: builds
 
-      - name: Create Release
+      - name: Publish to 'latest-commit' Release
         uses: softprops/action-gh-release@v2
         with:
+          tag_name: latest-commit
+          name: Build From Latest Commit
           files: |
             builds/windows/**/*
             builds/linux/**/*
+          draft: false
+          prerelease: true
+          generate_release_notes: false
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
