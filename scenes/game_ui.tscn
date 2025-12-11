@@ -1,8 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://ca2dlyq7kge1m"]
+[gd_scene load_steps=4 format=3 uid="uid://ca2dlyq7kge1m"]
 
 [ext_resource type="Script" uid="uid://dj2qeqnp8vamb" path="res://scripts/fps.gd" id="1_rns2u"]
 [ext_resource type="PackedScene" uid="uid://dn5eutlmvobb0" path="res://scenes/computer_ui.tscn" id="1_yubou"]
-[ext_resource type="PackedScene" uid="uid://dj7ub72yvowmt" path="res://scenes/transition.tscn" id="3_u001w"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_ojb23"]
 font_size = 24
@@ -94,6 +93,3 @@ offset_right = 892.0
 offset_bottom = 715.0
 text = "Press Enter to continue"
 autowrap_mode = 3
-
-[node name="Transition" parent="." instance=ExtResource("3_u001w")]
-layer = 100

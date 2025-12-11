@@ -1,0 +1,20 @@
+[gd_scene load_steps=5 format=3 uid="uid://dl8t2epwy7e51"]
+
+[ext_resource type="Script" uid="uid://b8qtu2v7khe85" path="res://scripts/scene_manager.gd" id="1_we8k5"]
+[ext_resource type="PackedScene" uid="uid://dj7ub72yvowmt" path="res://scenes/transition.tscn" id="2_b81s6"]
+[ext_resource type="Shader" uid="uid://c6d5rtpsb4onx" path="res://shaders/transition.gdshader" id="3_h7lqg"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_q7wi7"]
+resource_local_to_scene = true
+shader = ExtResource("3_h7lqg")
+shader_parameter/AspectRatio = 1.778
+shader_parameter/Diamonds = 10.0
+shader_parameter/pixel_size = 0.08
+shader_parameter/height = -1.0
+shader_parameter/disable_pixel = false
+
+[node name="SceneManager" type="Node"]
+script = ExtResource("1_we8k5")
+
+[node name="Transition" parent="." instance=ExtResource("2_b81s6")]
+material = SubResource("ShaderMaterial_q7wi7")
