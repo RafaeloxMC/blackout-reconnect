@@ -1,0 +1,57 @@
+[gd_scene load_steps=3 format=3 uid="uid://cxmheob7ku8ly"]
+
+[ext_resource type="PackedScene" uid="uid://7egpkb2m1tjn" path="res://scenes/world.tscn" id="1_l6cm7"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_l6cm7"]
+font_size = 64
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="UIElements" type="Control" parent="."]
+anchors_preset = 0
+offset_left = 64.0
+offset_top = 128.0
+offset_right = 705.0
+offset_bottom = 448.0
+
+[node name="Label" type="Label" parent="UIElements"]
+layout_mode = 0
+offset_right = 628.0
+offset_bottom = 88.0
+text = "Blackout: Reconnect"
+label_settings = SubResource("LabelSettings_l6cm7")
+
+[node name="Button" type="Button" parent="UIElements"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = 8.0
+offset_right = 271.0
+offset_bottom = 75.0
+grow_vertical = 2
+theme_override_font_sizes/font_size = 32
+text = "Play"
+
+[node name="Button2" type="Button" parent="UIElements"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -67.0
+offset_right = 271.0
+grow_vertical = 0
+theme_override_font_sizes/font_size = 32
+text = "Quit"
+
+[node name="World" parent="." instance=ExtResource("1_l6cm7")]
+
+[node name="Camera3D" type="Camera3D" parent="World"]
+transform = Transform3D(-0.87121385, -0.21288486, 0.44234204, 0, 0.90107703, 0.4336591, -0.4909037, 0.37780982, -0.7850308, 164.73047, 801.691, -734.6983)
+current = true
