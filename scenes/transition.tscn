@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://dj7ub72yvowmt"]
+
+[ext_resource type="Script" uid="uid://dpgx7dep6xfvu" path="res://scripts/transition.gd" id="1_f0i4t"]
+[ext_resource type="Material" uid="uid://cxgx04fmvj01w" path="res://materials/transition.tres" id="1_px735"]
+
+[node name="Transition" type="ColorRect"]
+modulate = Color(0, 0, 0, 1)
+self_modulate = Color(0, 0, 0, 1)
+z_index = 4096
+material = ExtResource("1_px735")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(640, 360)
+mouse_filter = 2
+script = ExtResource("1_f0i4t")

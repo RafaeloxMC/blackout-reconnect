@@ -1,0 +1,12 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://cxgx04fmvj01w"]
+
+[ext_resource type="Shader" uid="uid://c6d5rtpsb4onx" path="res://shaders/transition.gdshader" id="1_imhu6"]
+
+[resource]
+resource_local_to_scene = true
+shader = ExtResource("1_imhu6")
+shader_parameter/AspectRatio = 1.778
+shader_parameter/Diamonds = 10.0
+shader_parameter/pixel_size = 0.08
+shader_parameter/height = -1.0
+shader_parameter/disable_pixel = false
