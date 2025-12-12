@@ -118,11 +118,7 @@ offset_right = 191.99997
 offset_bottom = 334.33334
 grow_horizontal = 2
 text = "Signals down? It's in your hand to save the world now. Without your help, many institutions will be offline. Hospitals without connection, military bases are dead. Find the password as quick as possible.
-Hint:
-The size of this file could be an interesting start?
-Maybe count the amount of equipment outside?
-What about the decade this has been written?
-What about the day?"
+A good start would be to check the files on your computer..."
 horizontal_alignment = 1
 autowrap_mode = 3
 
