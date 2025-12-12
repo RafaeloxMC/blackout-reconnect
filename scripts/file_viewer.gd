@@ -1,8 +1,15 @@
 extends Control
 
+@onready var files: Control = $Background/Left/Top/Files
+
 var mouse_inside: bool = false
 var mouse_offset: Vector2 = Vector2(0, 0)
 var dragging: bool = false
+
+func _ready():
+	for file: Button in files.get_children():
+		file.pressed.connect(func(): btn_press(file))
+	pass
 
 func _process(_delta: float) -> void:
 	if dragging:
@@ -37,3 +44,7 @@ func _on_navbar_gui_input(event: InputEvent) -> void:
 
 func _on_close_nav_pressed() -> void:
 	self.hide()
+
+func btn_press(btn: Button):
+	print("Selected " + btn.text)
+	pass
