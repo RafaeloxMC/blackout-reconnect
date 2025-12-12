@@ -38,47 +38,116 @@ anchor_left = 0.060000002
 anchor_top = 0.238
 anchor_right = 0.298
 anchor_bottom = 0.767
-offset_left = 0.31044006
-offset_top = -0.14990234
-offset_right = -0.14556885
-offset_bottom = 0.047424316
+offset_left = -42.022903
+offset_top = -67.483246
+offset_right = 36.521088
+offset_bottom = 89.38074
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Navbar2" type="ColorRect" parent="Background/Left"]
-layout_mode = 0
-offset_left = 207.33333
-offset_top = -66.666664
-offset_right = 211.66667
-offset_bottom = 292.5754
-color = Color(0.26293245, 0.26293245, 0.26293242, 0.94509804)
+[node name="Top" type="Control" parent="Background/Left"]
+anchors_preset = 0
+offset_right = 249.33334
+offset_bottom = 178.0
 
-[node name="Connection Status" type="Label" parent="Background/Left"]
+[node name="FilesHeader" type="Label" parent="Background/Left/Top"]
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -107.5
-offset_top = -254.33334
-offset_right = 33.5
-offset_bottom = -231.33334
+offset_left = -104.66666
+offset_top = -164.66664
+offset_right = 36.33333
+offset_bottom = -141.66664
+grow_horizontal = 2
+grow_vertical = 0
+text = "Files (4)"
+
+[node name="Files" type="Control" parent="Background/Left/Top"]
+anchors_preset = 0
+offset_left = 21.333334
+offset_top = 34.0
+offset_right = 226.66667
+offset_bottom = 162.66669
+
+[node name="Instructions" type="Button" parent="Background/Left/Top/Files"]
+layout_mode = 0
+offset_top = 0.6666667
+offset_right = 205.33334
+offset_bottom = 31.666666
+text = "instructions.txt"
+
+[node name="Passcode" type="Button" parent="Background/Left/Top/Files"]
+layout_mode = 0
+offset_top = 35.333332
+offset_right = 205.33334
+offset_bottom = 66.33333
+text = "passcode.txt"
+
+[node name="Caesar" type="Button" parent="Background/Left/Top/Files"]
+layout_mode = 0
+offset_top = 70.0
+offset_right = 205.33334
+offset_bottom = 101.0
+text = "caesar.txt"
+
+[node name="LostSignal" type="Button" parent="Background/Left/Top/Files"]
+layout_mode = 0
+offset_top = 104.66667
+offset_right = 205.33334
+offset_bottom = 135.66667
+text = "lost_signal.txt"
+
+[node name="Seperator" type="ColorRect" parent="Background/Left"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -124.66666
+offset_top = -1.6666565
+offset_right = 125.33334
+offset_bottom = 2.3789673
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.26293245, 0.26293245, 0.26293242, 0.94509804)
+
+[node name="Bottom" type="Control" parent="Background/Left"]
+anchors_preset = 0
+offset_left = -0.66666675
+offset_top = 182.00002
+offset_right = 248.66667
+offset_bottom = 360.0
+
+[node name="StatsHeader" type="Label" parent="Background/Left/Bottom"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -104.66666
+offset_top = -164.66664
+offset_right = 36.33333
+offset_bottom = -141.66664
 grow_horizontal = 2
 grow_vertical = 0
 text = "File Stats"
 
-[node name="Last Ping" type="Label" parent="Background/Left"]
+[node name="Stats" type="Label" parent="Background/Left/Bottom"]
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -107.5
-offset_top = -231.0
-offset_right = 99.83334
-offset_bottom = -49.66667
+offset_left = -104.66666
+offset_top = -141.3333
+offset_right = 102.66667
+offset_bottom = -64.33328
 grow_horizontal = 2
 grow_vertical = 0
 text = "Last edited 01/01/1970
@@ -86,6 +155,14 @@ File size: 8KB
 File owned by: Agency 47 LLC.
 Editable: READ_ONLY"
 label_settings = SubResource("LabelSettings_vi1w1")
+
+[node name="Seperator" type="ColorRect" parent="Background"]
+layout_mode = 0
+offset_left = 250.36378
+offset_top = 24.575424
+offset_right = 254.69713
+offset_bottom = 383.8175
+color = Color(0.26293245, 0.26293245, 0.26293242, 0.94509804)
 
 [node name="Right" type="Control" parent="Background"]
 anchors_preset = 0
@@ -157,9 +234,9 @@ theme_override_styles/hover = SubResource("StyleBoxFlat_448bo")
 theme_override_styles/focus = SubResource("StyleBoxFlat_a81r2")
 text = "X"
 
-[connection signal="gui_input" from="Background/Left/Navbar2" to="." method="_on_navbar_gui_input"]
-[connection signal="mouse_entered" from="Background/Left/Navbar2" to="." method="_on_navbar_mouse_entered"]
-[connection signal="mouse_exited" from="Background/Left/Navbar2" to="." method="_on_navbar_mouse_exited"]
+[connection signal="gui_input" from="Background/Seperator" to="." method="_on_navbar_gui_input"]
+[connection signal="mouse_entered" from="Background/Seperator" to="." method="_on_navbar_mouse_entered"]
+[connection signal="mouse_exited" from="Background/Seperator" to="." method="_on_navbar_mouse_exited"]
 [connection signal="gui_input" from="Navbar" to="." method="_on_navbar_gui_input"]
 [connection signal="mouse_entered" from="Navbar" to="." method="_on_navbar_mouse_entered"]
 [connection signal="mouse_exited" from="Navbar" to="." method="_on_navbar_mouse_exited"]
