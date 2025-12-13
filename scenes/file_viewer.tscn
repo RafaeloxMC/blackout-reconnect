@@ -6,6 +6,7 @@
 [sub_resource type="Resource" id="Resource_a81r2"]
 script = ExtResource("2_4xp71")
 title = "Caesar"
+content = "Caesar is a very famous methods to hide your text, so others cannot read it! Letters are offset by a given number. If you have the text \"Hello\" and you use the number 3 to encrypt the message, the output would be \"Khoor\"."
 metadata/_custom_type_script = "uid://b0bvt8178n8iw"
 
 [sub_resource type="Resource" id="Resource_448bo"]
