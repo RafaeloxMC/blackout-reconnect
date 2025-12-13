@@ -12,6 +12,8 @@ const MOUSE_SENSITIVITY = 0.002
 @onready var title: Label = $GameUI/Dialog/Title
 @onready var text: Label = $GameUI/Dialog/Text
 
+@export var pause_screen: PackedScene = preload("res://scenes/pause_menu.tscn")
+
 var rotation_x := 0.0
 var rotation_y := 0.0
 var current_collider = ""
@@ -37,8 +39,12 @@ func _input(event):
 		if Input.get_mouse_mode() == Input.MOUSE_MODE_VISIBLE and self.find_child("GameUI").find_child("ComputerUI").visible == false:
 			Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	elif event is InputEventKey and event.pressed:
-		if event.keycode == KEY_ESCAPE and self.find_child("GameUI").find_child("ComputerUI").visible == false:
-			Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+		if event.keycode == KEY_ESCAPE:
+			if self.find_child("GameUI").find_child("ComputerUI").visible == false:
+				Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+				if not self.has_node("PauseMenu"):
+					var pause_menu: ColorRect = pause_screen.instantiate()
+					self.add_child(pause_menu)
 
 func _physics_process(delta: float) -> void:
 	if not is_on_floor():
