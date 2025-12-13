@@ -3,6 +3,10 @@ extends Control
 @onready var files: Control = $Background/Left/Top/Files
 @onready var file_header: Label = $"Background/Right/File Header"
 @onready var file_content: Label = $"Background/Right/File Content"
+@onready var last_edited: Label = $Background/Left/Bottom/LastEdited
+@onready var file_size: Label = $Background/Left/Bottom/FileSize
+@onready var owned_by: Label = $Background/Left/Bottom/OwnedBy
+@onready var permissions: Label = $Background/Left/Bottom/Permissions
 
 var mouse_inside: bool = false
 var mouse_offset: Vector2 = Vector2(0, 0)
@@ -56,5 +60,9 @@ func btn_press(btn: Button):
 		var content_obj: FileContent = contents.get(btn.text)
 		file_header.text = content_obj.title
 		file_content.text = content_obj.content.replace("\\n", "\n")
+		last_edited.text = "Last Edited: " + content_obj.file_last_edited
+		file_size.text = "Size: " + content_obj.file_size
+		owned_by.text = "Owned By: " + content_obj.file_owner
+		permissions.text = "Permissions: " + content_obj.file_permissions
 	print("Selected " + btn.text)
 	pass
