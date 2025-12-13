@@ -24,7 +24,7 @@ metadata/_custom_type_script = "uid://b0bvt8178n8iw"
 [sub_resource type="Resource" id="Resource_4xp71"]
 script = ExtResource("2_4xp71")
 title = "PÄ5SC0oO0oDdddDeEeeE"
-content = "File content cannot be read"
+content = "<CORRUPTED>\\nFile contents cannot be read.\\nRecovered parts of this file:\\nAdmnogt, D rjpgy xczxf ocz nduz ja ocz adgz..."
 metadata/_custom_type_script = "uid://b0bvt8178n8iw"
 
 [sub_resource type="LabelSettings" id="LabelSettings_vi1w1"]
