@@ -4,7 +4,7 @@ const SPEED = 100.0
 const JUMP_VELOCITY = 100.0
 const MOUSE_SENSITIVITY = 0.002
 
-@onready var camera = $Camera3D
+@onready var camera: Camera3D = $Camera3D
 @onready var ray_cast_3d: RayCast3D = $Camera3D/RayCast3D
 @onready var crosshair: Label = $GameUI/Crosshair
 @onready var dialog: Control = $GameUI/Dialog
@@ -14,10 +14,10 @@ const MOUSE_SENSITIVITY = 0.002
 
 @export var pause_screen: PackedScene = preload("res://scenes/pause_menu.tscn")
 
-var rotation_x := 0.0
-var rotation_y := 0.0
-var current_collider = ""
-var interactables = ["DeskCollider"]
+var rotation_x: float = 0.0
+var rotation_y: float = 0.0
+var current_collider: String = ""
+var interactables: Array[String] = ["DeskCollider"]
 var current_dialog: String = ""
 var dialog_timestamp: String = ""
 var is_dialog_active: bool = false
@@ -59,8 +59,8 @@ func _physics_process(delta: float) -> void:
 
 
 	if self.find_child("GameUI").find_child("ComputerUI").visible == false:
-		var input_dir := Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
-		var direction := (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
+		var input_dir: Vector2 = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
+		var direction: Vector3 = (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
 		if direction:
 			velocity.x = direction.x * SPEED
 			velocity.z = direction.z * SPEED
@@ -70,6 +70,11 @@ func _physics_process(delta: float) -> void:
 			
 		if Input.is_action_just_pressed("jump") and is_on_floor():
 			velocity.y = JUMP_VELOCITY
+	else:
+		var input_dir: Vector2 = Vector2(0, 0)
+		var direction: Vector3 = (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
+		velocity.x = direction.x * SPEED
+		velocity.z = direction.z * SPEED
 
 	check_collisions()
 	check_interactions()
@@ -93,7 +98,6 @@ func check_interactions():
 				should_show_pc_dialog = false
 			self.position = Vector3(37.009, 430.47, 230.202)
 			self.find_child("GameUI").find_child("ComputerUI").visible = true
-			# SHOW DESK MENU
 
 func hide_dialog():
 	if is_dialog_active:
