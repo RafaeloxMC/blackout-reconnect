@@ -1,6 +1,30 @@
-[gd_scene load_steps=8 format=3 uid="uid://duosadeq84jhd"]
+[gd_scene load_steps=13 format=3 uid="uid://duosadeq84jhd"]
 
 [ext_resource type="Script" uid="uid://ddeelq2k8vbb8" path="res://scripts/file_viewer.gd" id="1_s34fm"]
+[ext_resource type="Script" uid="uid://b0bvt8178n8iw" path="res://scripts/file_content.gd" id="2_4xp71"]
+
+[sub_resource type="Resource" id="Resource_a81r2"]
+script = ExtResource("2_4xp71")
+title = "Caesar"
+metadata/_custom_type_script = "uid://b0bvt8178n8iw"
+
+[sub_resource type="Resource" id="Resource_448bo"]
+script = ExtResource("2_4xp71")
+title = "How To Launch The Signal Station"
+content = "Signals down? It's in your hand to save the world now. Without your help, many institutions will be offline. Hospitals without connection, military bases are dead. Find the password as quick as possible.\\nA good start would be to check the files on your computer..."
+metadata/_custom_type_script = "uid://b0bvt8178n8iw"
+
+[sub_resource type="Resource" id="Resource_6wud1"]
+script = ExtResource("2_4xp71")
+title = "Lost Signal"
+content = "3bb0a9a5fea577d3c507a07754011f27"
+metadata/_custom_type_script = "uid://b0bvt8178n8iw"
+
+[sub_resource type="Resource" id="Resource_4xp71"]
+script = ExtResource("2_4xp71")
+title = "PÄ5SC0oO0oDdddDeEeeE"
+content = "File content cannot be read"
+metadata/_custom_type_script = "uid://b0bvt8178n8iw"
 
 [sub_resource type="LabelSettings" id="LabelSettings_vi1w1"]
 font_size = 12
@@ -25,6 +49,12 @@ offset_right = 1309.9087
 offset_bottom = 840.27374
 scale = Vector2(3, 3)
 script = ExtResource("1_s34fm")
+contents = Dictionary[String, ExtResource("2_4xp71")]({
+"caesar.txt": SubResource("Resource_a81r2"),
+"instructions.txt": SubResource("Resource_448bo"),
+"lost_signal.txt": SubResource("Resource_6wud1"),
+"passcode.txt": SubResource("Resource_4xp71")
+})
 
 [node name="Background" type="ColorRect" parent="."]
 layout_mode = 0
@@ -171,7 +201,7 @@ offset_top = 23.908752
 offset_right = 712.03046
 offset_bottom = 383.90875
 
-[node name="Password Header" type="Label" parent="Background/Right"]
+[node name="File Header" type="Label" parent="Background/Right"]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
@@ -183,8 +213,9 @@ offset_bottom = 68.333336
 grow_horizontal = 2
 text = "How To Launch The Signal Station"
 label_settings = SubResource("LabelSettings_t8n0d")
+horizontal_alignment = 1
 
-[node name="Password Hint" type="Label" parent="Background/Right"]
+[node name="File Content" type="Label" parent="Background/Right"]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5

@@ -1,10 +1,16 @@
 extends Control
 
 @onready var files: Control = $Background/Left/Top/Files
+@onready var file_header: Label = $"Background/Right/File Header"
+@onready var file_content: Label = $"Background/Right/File Content"
 
 var mouse_inside: bool = false
 var mouse_offset: Vector2 = Vector2(0, 0)
 var dragging: bool = false
+
+
+
+@export var contents: Dictionary[String, FileContent] = {}
 
 func _ready():
 	for file: Button in files.get_children():
@@ -46,5 +52,9 @@ func _on_close_nav_pressed() -> void:
 	self.hide()
 
 func btn_press(btn: Button):
+	if contents.keys().has(btn.text):
+		var content_obj: FileContent = contents.get(btn.text)
+		file_header.text = content_obj.title
+		file_content.text = content_obj.content.replace("\\n", "\n")
 	print("Selected " + btn.text)
 	pass
