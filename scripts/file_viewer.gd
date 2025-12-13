@@ -1,5 +1,6 @@
 extends Control
 
+@onready var window_title: Label = $Navbar/Label
 @onready var files: Control = $Background/Left/Top/Files
 @onready var file_header: Label = $"Background/Right/File Header"
 @onready var file_content: Label = $"Background/Right/File Content"
@@ -19,6 +20,7 @@ var dragging: bool = false
 func _ready():
 	for file: Button in files.get_children():
 		file.pressed.connect(func(): btn_press(file))
+	select_file("instructions.txt")
 	pass
 
 func _process(_delta: float) -> void:
@@ -57,12 +59,16 @@ func _on_close_nav_pressed() -> void:
 
 func btn_press(btn: Button):
 	if contents.keys().has(btn.text):
-		var content_obj: FileContent = contents.get(btn.text)
-		file_header.text = content_obj.title
-		file_content.text = content_obj.content.replace("\\n", "\n")
-		last_edited.text = "Last Edited: " + content_obj.file_last_edited
-		file_size.text = "Size: " + content_obj.file_size
-		owned_by.text = "Owned By: " + content_obj.file_owner
-		permissions.text = "Permissions: " + content_obj.file_permissions
+		select_file(btn.text)
 	print("Selected " + btn.text)
 	pass
+
+func select_file(file: String):
+	var content_obj: FileContent = contents.get(file)
+	window_title.text = "File Viewer: " + file
+	file_header.text = content_obj.title
+	file_content.text = content_obj.content.replace("\\n", "\n")
+	last_edited.text = "Last Edited: " + content_obj.file_last_edited
+	file_size.text = "Size: " + content_obj.file_size
+	owned_by.text = "Owned By: " + content_obj.file_owner
+	permissions.text = "Permissions: " + content_obj.file_permissions
