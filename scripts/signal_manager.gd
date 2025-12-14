@@ -65,6 +65,9 @@ func win_animation() -> void:
 	tween.set_trans(Tween.TRANS_BACK)
 	tween.tween_property(status, "modulate:a", 1.0, 0.6)
 	tween.tween_property(status, "scale", Vector2.ONE, 0.6)
+	
+	await get_tree().create_timer(3).timeout
+	SceneManager.call_scene("win")
 
 func win_sequence() -> void:
 	button.disabled = true

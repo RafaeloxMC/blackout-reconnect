@@ -14,6 +14,8 @@ const MOUSE_SENSITIVITY = 0.002
 
 @export var pause_screen: PackedScene = preload("res://scenes/pause_menu.tscn")
 
+var start_time: float = Time.get_unix_time_from_system()
+
 var rotation_x: float = 0.0
 var rotation_y: float = 0.0
 var current_collider: String = ""

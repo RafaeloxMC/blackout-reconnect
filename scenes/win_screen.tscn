@@ -1,0 +1,134 @@
+[gd_scene load_steps=6 format=3 uid="uid://pnne4sg2d8jr"]
+
+[ext_resource type="Script" uid="uid://e7kriwbhaldu" path="res://scripts/win_screen.gd" id="1_erk2x"]
+[ext_resource type="PackedScene" uid="uid://7egpkb2m1tjn" path="res://scenes/world.tscn" id="1_wv5lq"]
+
+[sub_resource type="Animation" id="Animation_ekxnf"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(164.73047, 801.691, -734.6983)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-0.44854963, 2.628466, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_l6cm7"]
+resource_name = "cinematic"
+length = 30.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 4.5, 9, 9.0001, 14, 15, 18, 22),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(164.73047, 801.691, -734.6983), Vector3(-425.82214, 801.691, -670.1094), Vector3(-638.6998, 801.691, -289.19424), Vector3(-71.695984, 547.42944, 102.80362), Vector3(-71.695984, 525.14417, 257.62726), Vector3(-71.695984, 502.8581, 288.53195), Vector3(-24.41069, 562.6247, 83.885925), Vector3(38.636368, 642.3135, -188.97552)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 4.5, 9, 9.0001, 14, 15, 18, 22),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(-0.44854963, 2.628466, 0), Vector3(-0.4485497, 2.9642322, -4.095423e-09), Vector3(-0.44854963, 3.3807027, 0), Vector3(-0.44854963, -2.4968717, 0), Vector3(-0.33597776, -1.3224847, -3.8703507e-09), Vector3(-0.22340214, -1.0367255, 0), Vector3(-0.26843163, -0.30368733, 0), Vector3(0.34557518, 0.6736971, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_bqqt6"]
+_data = {
+&"RESET": SubResource("Animation_ekxnf"),
+&"cinematic": SubResource("Animation_l6cm7")
+}
+
+[node name="WinScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_erk2x")
+
+[node name="World" parent="." instance=ExtResource("1_wv5lq")]
+
+[node name="Camera3D" type="Camera3D" parent="World"]
+transform = Transform3D(-0.8712138, -0.21288486, 0.44234204, 0, 0.90107703, 0.4336591, -0.49090368, 0.37780982, -0.7850308, 164.73047, 801.691, -734.6983)
+current = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="World/Camera3D"]
+libraries = {
+&"": SubResource("AnimationLibrary_bqqt6")
+}
+autoplay = "cinematic"
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -106.5
+offset_top = 108.0
+offset_right = 106.5
+offset_bottom = 175.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 48
+text = "You won!"
+
+[node name="Label2" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -332.5
+offset_top = -191.0
+offset_right = 332.5
+offset_bottom = -146.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 32
+text = "Thank you for playing Blackout: Reconnect!"
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -48.0
+offset_top = -15.5
+offset_right = 48.0
+offset_bottom = 15.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 32
+text = "Main Menu"
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
