@@ -5,6 +5,7 @@ extends Control
 @onready var player: CharacterBody3D = $"../../"
 @onready var file_viewer: Control = $"Screen/Main/File Viewer"
 @onready var fv_label: Label = $Screen/Main/FileIcon/Label
+@onready var fail_sound: AudioStreamPlayer = $FailSound
 
 var should_show_signal_dialog: bool = true
 var should_show_fv_dialog: bool = true
@@ -33,6 +34,7 @@ func _on_signal_icon_gui_input(event: InputEvent) -> void:
 		if should_show_signal_dialog:
 			player.show_dialog("You", "Oh no... What is going on here???")
 			should_show_signal_dialog = false
+			fail_sound.play(0.3)
 
 func _on_file_icon_mouse_entered() -> void:
 	fv_label.label_settings.outline_size = 1

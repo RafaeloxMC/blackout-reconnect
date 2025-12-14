@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://dn5eutlmvobb0"]
+[gd_scene load_steps=10 format=3 uid="uid://dn5eutlmvobb0"]
 
 [ext_resource type="Script" uid="uid://dn83uqgi0hu0k" path="res://scripts/computer_ui.gd" id="1_a82rf"]
 [ext_resource type="Texture2D" uid="uid://dqpyid2x6hd2b" path="res://textures/antenna.png" id="1_w3x1j"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://cs88qbww53pfs" path="res://scenes/signal_manager.tscn" id="4_mr56c"]
 [ext_resource type="Texture2D" uid="uid://d0ac5wid7ts3u" path="res://textures/file.png" id="4_y1jwv"]
 [ext_resource type="PackedScene" uid="uid://duosadeq84jhd" path="res://scenes/file_viewer.tscn" id="6_ltmx6"]
+[ext_resource type="AudioStream" uid="uid://chej6cuxrl2ln" path="res://sounds/fail.mp3" id="7_kdani"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_a82rf"]
 font_size = 32
@@ -152,6 +153,9 @@ offset_left = 410.6464
 offset_top = 247.14828
 offset_right = 1122.6464
 offset_bottom = 631.1483
+
+[node name="FailSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_kdani")
 
 [connection signal="visibility_changed" from="." to="." method="_on_visibility_changed"]
 [connection signal="gui_input" from="Screen/Main/SignalIcon" to="." method="_on_signal_icon_gui_input"]
