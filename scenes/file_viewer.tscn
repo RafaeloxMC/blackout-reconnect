@@ -8,12 +8,13 @@ script = ExtResource("2_4xp71")
 title = "Caesar"
 content = "Caesar is a very famous methods to hide your text, so others cannot read it! Letters are offset by a given number. If you have the text \"Hello\" and you use the number 3 to encrypt the message, the output would be \"Khoor\"."
 file_size = "189KB"
+file_owner = "3, 4: Agency 4747 LLC."
 metadata/_custom_type_script = "uid://b0bvt8178n8iw"
 
 [sub_resource type="Resource" id="Resource_448bo"]
 script = ExtResource("2_4xp71")
 title = "How To Launch The Signal Station"
-content = "Signals down? It's in your hand to save the world now. Without your help, many institutions will be offline. Hospitals without connection, military bases are dead. Find the password as quick as possible.\\nA good start would be to check the files on your computer..."
+content = "Signals down? It's in your hand to save the world now. Without your help, many institutions will be offline. Hospitals without connection, military bases are dead. Find the password as quick as possible.\\nA good start would be to check the files on your computer...\\n\\nPS: I am not sure but I think the second digit had something to do with the amount of equipment outside..."
 file_size = "244KB"
 metadata/_custom_type_script = "uid://b0bvt8178n8iw"
 
@@ -27,7 +28,7 @@ metadata/_custom_type_script = "uid://b0bvt8178n8iw"
 [sub_resource type="Resource" id="Resource_4xp71"]
 script = ExtResource("2_4xp71")
 title = "PÄ5SC0oO0oDdddDeEeeE"
-content = "<CORRUPTED>\\nFile contents cannot be read.\\nRecovered parts of this file:\\nAdmnogt, D rjpgy xczxf ocz nduz ja ocz adgz..."
+content = "<CORRUPTED>\\nFile contents cannot be read.\\nRecovered parts of this file:\\nAdmnogt, D rjpgy xczxf ocz nduz ja ocz ndbivg adgz..."
 file_last_edited = "12/09/2001"
 file_size = "142KB"
 metadata/_custom_type_script = "uid://b0bvt8178n8iw"

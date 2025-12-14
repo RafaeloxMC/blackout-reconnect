@@ -42,7 +42,7 @@ func _on_navbar_gui_input(event: InputEvent) -> void:
 
 
 func _on_button_pressed() -> void:
-	if password_field.text == "8271":
+	if password_field.text == "8247":
 		button.disabled = true
 		status.text = "DECODING..."
 		await get_tree().create_timer(1).timeout
